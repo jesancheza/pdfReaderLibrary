@@ -30,4 +30,5 @@
                tags:(NSArray *) tags
             authors:(NSArray *) authors;
 
+-(id) initWithDictionary:(NSDictionary *) dic;
 @end

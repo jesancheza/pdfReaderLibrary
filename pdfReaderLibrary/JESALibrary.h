@@ -13,6 +13,8 @@
 
 @property(nonatomic, readonly) NSUInteger booksCount;
 
+-(id) initWithModel:(NSData *) data;
+-(JESABook *) libraryAtIndex:(NSUInteger) index;
 
 //-(NSArray *) tags;
 //-(NSUInteger) bookCountForTag:(NSString *) tag;

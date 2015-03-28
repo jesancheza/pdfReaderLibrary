@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "JESALibrary.h"
+#import "JESALibraryTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +20,22 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    
+    [self downloadData];
+    
+    NSData *data = [self loadJSON];
+    
+    // Creamos el modelo
+    JESALibrary *model = [[JESALibrary alloc] initWithModel:data];
+    
+    // Creamos el controlador
+    JESALibraryTableViewController *lVC = [[JESALibraryTableViewController alloc] initWithModel:model];
+    
+    // Creamos un combinador
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:lVC];
+    
+    self.window.rootViewController = nav;
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
@@ -43,6 +61,55 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(void) downloadData{
+    // Descargo el JSON
+    NSURL *urlJSON = [NSURL URLWithString:@"https://t.co/K9ziV0z3SJ"];
+
+    NSData *data = [NSData dataWithContentsOfURL:urlJSON];
+    
+    //  Averiguar la url a la carpeta Document
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSArray *urls = [fm URLsForDirectory:NSDocumentDirectory
+                               inDomains:NSUserDomainMask];
+    
+    NSURL *url = [urls lastObject];
+    
+    url = [url URLByAppendingPathComponent:@"books.json"];
+    // Guardamos el JSON en Documents
+    NSError *err = nil;
+    BOOL rc = [data writeToURL:url
+                       options:NSDataWritingAtomic
+                         error:&err];
+    
+    // Comprobar que se guarda
+    if (rc == NO) {
+        // Error!
+        NSLog(@"Error al guardar el fichero JSON: %@", err.userInfo);
+    }else{
+        // No hubo error
+        NSLog(@"Se ha cargado correctamente");
+    }
+
+}
+
+-(NSData *) loadJSON{
+    //  Averiguar la url a la carpeta Document
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSArray *urls = [fm URLsForDirectory:NSDocumentDirectory
+                               inDomains:NSUserDomainMask];
+    
+    NSURL *url = [urls lastObject];
+    
+    url = [url URLByAppendingPathComponent:@"books.json"];
+    
+    NSError *err;
+    NSData *data = [NSData dataWithContentsOfURL:url
+                                         options:NSDataReadingMappedIfSafe
+                                           error:&err];
+    
+    return data;
 }
 
 @end

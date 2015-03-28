@@ -14,6 +14,7 @@
 		EDC3EDD11AC6B471003DBEC4 /* pdfReaderLibraryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC3EDD01AC6B471003DBEC4 /* pdfReaderLibraryTests.m */; };
 		EDC3EDDC1AC6B4EE003DBEC4 /* JESABook.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC3EDDB1AC6B4EE003DBEC4 /* JESABook.m */; };
 		EDC3EDE01AC6C1C8003DBEC4 /* JESALibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC3EDDF1AC6C1C8003DBEC4 /* JESALibrary.m */; };
+		EDC3EDE71AC6F1A6003DBEC4 /* JESALibraryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC3EDE61AC6F1A6003DBEC4 /* JESALibraryTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,8 @@
 		EDC3EDDB1AC6B4EE003DBEC4 /* JESABook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JESABook.m; sourceTree = "<group>"; };
 		EDC3EDDE1AC6C1C8003DBEC4 /* JESALibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JESALibrary.h; sourceTree = "<group>"; };
 		EDC3EDDF1AC6C1C8003DBEC4 /* JESALibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JESALibrary.m; sourceTree = "<group>"; };
+		EDC3EDE51AC6F1A6003DBEC4 /* JESALibraryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JESALibraryTableViewController.h; sourceTree = "<group>"; };
+		EDC3EDE61AC6F1A6003DBEC4 /* JESALibraryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JESALibraryTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,7 @@
 		EDC3EDB91AC6B470003DBEC4 /* pdfReaderLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				EDC3EDE11AC6F0ED003DBEC4 /* Controllers */,
 				EDC3EDBE1AC6B470003DBEC4 /* AppDelegate.h */,
 				EDC3EDBF1AC6B470003DBEC4 /* AppDelegate.m */,
 				EDC3EDC11AC6B470003DBEC4 /* Images.xcassets */,
@@ -127,6 +131,15 @@
 				EDC3EDDF1AC6C1C8003DBEC4 /* JESALibrary.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		EDC3EDE11AC6F0ED003DBEC4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EDC3EDE51AC6F1A6003DBEC4 /* JESALibraryTableViewController.h */,
+				EDC3EDE61AC6F1A6003DBEC4 /* JESALibraryTableViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +245,7 @@
 				EDC3EDC01AC6B470003DBEC4 /* AppDelegate.m in Sources */,
 				EDC3EDBD1AC6B470003DBEC4 /* main.m in Sources */,
 				EDC3EDDC1AC6B4EE003DBEC4 /* JESABook.m in Sources */,
+				EDC3EDE71AC6F1A6003DBEC4 /* JESALibraryTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

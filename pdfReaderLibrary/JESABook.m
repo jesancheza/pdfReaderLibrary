@@ -41,4 +41,31 @@
     return self;
 }
 
+#pragma mark - JSON
+-(id) initWithDictionary:(NSDictionary *) dic{
+    
+    return [self initWithTitle:[dic objectForKey:@"title"]
+                       imageURL:[NSURL URLWithString:[dic objectForKey:@"image_url"]]
+                        bookURL:[NSURL URLWithString:[dic objectForKey:@"pdf_url"]]
+                           tags:[self extractTagsFromJSON:[dic objectForKey:@"tags"]]
+                        authors:[self extractAuthorsFromJSON:[dic objectForKey:@"authors"]]];
+}
+
+-(NSArray *) extractTagsFromJSON:(NSString *) tagsJSON{
+    
+    
+    NSArray *tags = [tagsJSON componentsSeparatedByString:@","];
+    
+    
+    
+    return tags;
+}
+
+-(NSArray *) extractAuthorsFromJSON:(NSString *) authorsJSON{
+    
+    NSArray *authors = [authorsJSON componentsSeparatedByString:@","];
+    
+    return authors;
+}
+
 @end
