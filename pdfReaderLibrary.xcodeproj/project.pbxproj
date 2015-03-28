@@ -1,0 +1,409 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EDC3EDBD1AC6B470003DBEC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC3EDBC1AC6B470003DBEC4 /* main.m */; };
+		EDC3EDC01AC6B470003DBEC4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC3EDBF1AC6B470003DBEC4 /* AppDelegate.m */; };
+		EDC3EDC21AC6B470003DBEC4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDC3EDC11AC6B470003DBEC4 /* Images.xcassets */; };
+		EDC3EDC51AC6B470003DBEC4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC3EDC31AC6B470003DBEC4 /* LaunchScreen.xib */; };
+		EDC3EDD11AC6B471003DBEC4 /* pdfReaderLibraryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC3EDD01AC6B471003DBEC4 /* pdfReaderLibraryTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EDC3EDCB1AC6B471003DBEC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDC3EDAF1AC6B470003DBEC4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EDC3EDB61AC6B470003DBEC4;
+			remoteInfo = pdfReaderLibrary;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EDC3EDB71AC6B470003DBEC4 /* pdfReaderLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pdfReaderLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDC3EDBB1AC6B470003DBEC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDC3EDBC1AC6B470003DBEC4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EDC3EDBE1AC6B470003DBEC4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EDC3EDBF1AC6B470003DBEC4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EDC3EDC11AC6B470003DBEC4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EDC3EDC41AC6B470003DBEC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		EDC3EDCA1AC6B471003DBEC4 /* pdfReaderLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pdfReaderLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDC3EDCF1AC6B471003DBEC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDC3EDD01AC6B471003DBEC4 /* pdfReaderLibraryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pdfReaderLibraryTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EDC3EDB41AC6B470003DBEC4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDC3EDC71AC6B471003DBEC4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EDC3EDAE1AC6B470003DBEC4 = {
+			isa = PBXGroup;
+			children = (
+				EDC3EDB91AC6B470003DBEC4 /* pdfReaderLibrary */,
+				EDC3EDCD1AC6B471003DBEC4 /* pdfReaderLibraryTests */,
+				EDC3EDB81AC6B470003DBEC4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EDC3EDB81AC6B470003DBEC4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDC3EDB71AC6B470003DBEC4 /* pdfReaderLibrary.app */,
+				EDC3EDCA1AC6B471003DBEC4 /* pdfReaderLibraryTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDC3EDB91AC6B470003DBEC4 /* pdfReaderLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				EDC3EDBE1AC6B470003DBEC4 /* AppDelegate.h */,
+				EDC3EDBF1AC6B470003DBEC4 /* AppDelegate.m */,
+				EDC3EDC11AC6B470003DBEC4 /* Images.xcassets */,
+				EDC3EDC31AC6B470003DBEC4 /* LaunchScreen.xib */,
+				EDC3EDBA1AC6B470003DBEC4 /* Supporting Files */,
+			);
+			path = pdfReaderLibrary;
+			sourceTree = "<group>";
+		};
+		EDC3EDBA1AC6B470003DBEC4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EDC3EDBB1AC6B470003DBEC4 /* Info.plist */,
+				EDC3EDBC1AC6B470003DBEC4 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EDC3EDCD1AC6B471003DBEC4 /* pdfReaderLibraryTests */ = {
+			isa = PBXGroup;
+			children = (
+				EDC3EDD01AC6B471003DBEC4 /* pdfReaderLibraryTests.m */,
+				EDC3EDCE1AC6B471003DBEC4 /* Supporting Files */,
+			);
+			path = pdfReaderLibraryTests;
+			sourceTree = "<group>";
+		};
+		EDC3EDCE1AC6B471003DBEC4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EDC3EDCF1AC6B471003DBEC4 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EDC3EDB61AC6B470003DBEC4 /* pdfReaderLibrary */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDC3EDD41AC6B471003DBEC4 /* Build configuration list for PBXNativeTarget "pdfReaderLibrary" */;
+			buildPhases = (
+				EDC3EDB31AC6B470003DBEC4 /* Sources */,
+				EDC3EDB41AC6B470003DBEC4 /* Frameworks */,
+				EDC3EDB51AC6B470003DBEC4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = pdfReaderLibrary;
+			productName = pdfReaderLibrary;
+			productReference = EDC3EDB71AC6B470003DBEC4 /* pdfReaderLibrary.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EDC3EDC91AC6B471003DBEC4 /* pdfReaderLibraryTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDC3EDD71AC6B471003DBEC4 /* Build configuration list for PBXNativeTarget "pdfReaderLibraryTests" */;
+			buildPhases = (
+				EDC3EDC61AC6B471003DBEC4 /* Sources */,
+				EDC3EDC71AC6B471003DBEC4 /* Frameworks */,
+				EDC3EDC81AC6B471003DBEC4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EDC3EDCC1AC6B471003DBEC4 /* PBXTargetDependency */,
+			);
+			name = pdfReaderLibraryTests;
+			productName = pdfReaderLibraryTests;
+			productReference = EDC3EDCA1AC6B471003DBEC4 /* pdfReaderLibraryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EDC3EDAF1AC6B470003DBEC4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = Devappify;
+				TargetAttributes = {
+					EDC3EDB61AC6B470003DBEC4 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					EDC3EDC91AC6B471003DBEC4 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = EDC3EDB61AC6B470003DBEC4;
+					};
+				};
+			};
+			buildConfigurationList = EDC3EDB21AC6B470003DBEC4 /* Build configuration list for PBXProject "pdfReaderLibrary" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EDC3EDAE1AC6B470003DBEC4;
+			productRefGroup = EDC3EDB81AC6B470003DBEC4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EDC3EDB61AC6B470003DBEC4 /* pdfReaderLibrary */,
+				EDC3EDC91AC6B471003DBEC4 /* pdfReaderLibraryTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EDC3EDB51AC6B470003DBEC4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDC3EDC51AC6B470003DBEC4 /* LaunchScreen.xib in Resources */,
+				EDC3EDC21AC6B470003DBEC4 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDC3EDC81AC6B471003DBEC4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EDC3EDB31AC6B470003DBEC4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDC3EDC01AC6B470003DBEC4 /* AppDelegate.m in Sources */,
+				EDC3EDBD1AC6B470003DBEC4 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDC3EDC61AC6B471003DBEC4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDC3EDD11AC6B471003DBEC4 /* pdfReaderLibraryTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EDC3EDCC1AC6B471003DBEC4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EDC3EDB61AC6B470003DBEC4 /* pdfReaderLibrary */;
+			targetProxy = EDC3EDCB1AC6B471003DBEC4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EDC3EDC31AC6B470003DBEC4 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDC3EDC41AC6B470003DBEC4 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EDC3EDD21AC6B471003DBEC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EDC3EDD31AC6B471003DBEC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EDC3EDD51AC6B471003DBEC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = pdfReaderLibrary/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EDC3EDD61AC6B471003DBEC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = pdfReaderLibrary/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EDC3EDD81AC6B471003DBEC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = pdfReaderLibraryTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pdfReaderLibrary.app/pdfReaderLibrary";
+			};
+			name = Debug;
+		};
+		EDC3EDD91AC6B471003DBEC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = pdfReaderLibraryTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pdfReaderLibrary.app/pdfReaderLibrary";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EDC3EDB21AC6B470003DBEC4 /* Build configuration list for PBXProject "pdfReaderLibrary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDC3EDD21AC6B471003DBEC4 /* Debug */,
+				EDC3EDD31AC6B471003DBEC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDC3EDD41AC6B471003DBEC4 /* Build configuration list for PBXNativeTarget "pdfReaderLibrary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDC3EDD51AC6B471003DBEC4 /* Debug */,
+				EDC3EDD61AC6B471003DBEC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EDC3EDD71AC6B471003DBEC4 /* Build configuration list for PBXNativeTarget "pdfReaderLibraryTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDC3EDD81AC6B471003DBEC4 /* Debug */,
+				EDC3EDD91AC6B471003DBEC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EDC3EDAF1AC6B470003DBEC4 /* Project object */;
+}
