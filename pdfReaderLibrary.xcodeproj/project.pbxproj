@@ -12,6 +12,8 @@
 		EDC3EDC21AC6B470003DBEC4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDC3EDC11AC6B470003DBEC4 /* Images.xcassets */; };
 		EDC3EDC51AC6B470003DBEC4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC3EDC31AC6B470003DBEC4 /* LaunchScreen.xib */; };
 		EDC3EDD11AC6B471003DBEC4 /* pdfReaderLibraryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC3EDD01AC6B471003DBEC4 /* pdfReaderLibraryTests.m */; };
+		EDC3EDDC1AC6B4EE003DBEC4 /* JESABook.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC3EDDB1AC6B4EE003DBEC4 /* JESABook.m */; };
+		EDC3EDE01AC6C1C8003DBEC4 /* JESALibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC3EDDF1AC6C1C8003DBEC4 /* JESALibrary.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,10 @@
 		EDC3EDCA1AC6B471003DBEC4 /* pdfReaderLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pdfReaderLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDC3EDCF1AC6B471003DBEC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDC3EDD01AC6B471003DBEC4 /* pdfReaderLibraryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pdfReaderLibraryTests.m; sourceTree = "<group>"; };
+		EDC3EDDA1AC6B4EE003DBEC4 /* JESABook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JESABook.h; sourceTree = "<group>"; };
+		EDC3EDDB1AC6B4EE003DBEC4 /* JESABook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JESABook.m; sourceTree = "<group>"; };
+		EDC3EDDE1AC6C1C8003DBEC4 /* JESALibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JESALibrary.h; sourceTree = "<group>"; };
+		EDC3EDDF1AC6C1C8003DBEC4 /* JESALibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JESALibrary.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,7 @@
 				EDC3EDC11AC6B470003DBEC4 /* Images.xcassets */,
 				EDC3EDC31AC6B470003DBEC4 /* LaunchScreen.xib */,
 				EDC3EDBA1AC6B470003DBEC4 /* Supporting Files */,
+				EDC3EDDD1AC6B4F4003DBEC4 /* Model */,
 			);
 			path = pdfReaderLibrary;
 			sourceTree = "<group>";
@@ -109,6 +116,17 @@
 				EDC3EDCF1AC6B471003DBEC4 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EDC3EDDD1AC6B4F4003DBEC4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EDC3EDDA1AC6B4EE003DBEC4 /* JESABook.h */,
+				EDC3EDDB1AC6B4EE003DBEC4 /* JESABook.m */,
+				EDC3EDDE1AC6C1C8003DBEC4 /* JESALibrary.h */,
+				EDC3EDDF1AC6C1C8003DBEC4 /* JESALibrary.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,8 +228,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDC3EDE01AC6C1C8003DBEC4 /* JESALibrary.m in Sources */,
 				EDC3EDC01AC6B470003DBEC4 /* AppDelegate.m in Sources */,
 				EDC3EDBD1AC6B470003DBEC4 /* main.m in Sources */,
+				EDC3EDDC1AC6B4EE003DBEC4 /* JESABook.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +348,7 @@
 				INFOPLIST_FILE = pdfReaderLibrary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -338,6 +359,7 @@
 				INFOPLIST_FILE = pdfReaderLibrary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
