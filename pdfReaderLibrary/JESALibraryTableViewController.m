@@ -11,6 +11,7 @@
 #import "JESABook.h"
 #import "JESABookCellView.h"
 #import "JESABookViewController.h"
+#import "Settings.h"
 
 @interface JESALibraryTableViewController ()
 
@@ -127,6 +128,14 @@
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
  
     JESABook *book = [self.model libraryAtIndex:indexPath.row];
+    
+    // Guardamos el último libro seleccionado
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSArray *coord = @[@(indexPath.section),@(indexPath.row)];
+    [defaults setObject:coord forKey:LAST_SELECTED_BOOK];
+    
+    [defaults synchronize];
     
     // Mandamos el mensaje al delegado si lo entiende
     if ([self.delegate respondsToSelector:@selector(libraryTableViewController:didSelectBook:)]) {

@@ -10,6 +10,7 @@
 #import "JESALibrary.h"
 #import "JESALibraryTableViewController.h"
 #import "JESABookViewController.h"
+#import "Settings.h"
 
 @interface AppDelegate ()
 
@@ -24,10 +25,10 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    if (![defaults objectForKey:@"first"]) {
+    if (![defaults objectForKey:FIRST_TIME]) {
         
         [defaults setObject:@"1"
-                     forKey:@"first"];
+                     forKey:FIRST_TIME];
         
         [defaults synchronize];
         
@@ -78,7 +79,7 @@
     // Creamos los controladores
     JESALibraryTableViewController *lVC = [[JESALibraryTableViewController alloc] initWithModel:model
                                                                                           style:UITableViewStylePlain];
-    JESABookViewController *bVC = [[JESABookViewController alloc] initWithModel:[model libraryAtIndex:0]];
+    JESABookViewController *bVC = [[JESABookViewController alloc] initWithModel:[self lastSelectedBookInModel:model]];
     
     // Creamos los navigations
     UINavigationController *lNav = [[UINavigationController alloc] initWithRootViewController:lVC];
@@ -92,6 +93,22 @@
     lVC.delegate = bVC;
     
     self.window.rootViewController = spltVC;
+}
+
+-(JESABook *) lastSelectedBookInModel:(JESALibrary *) library{
+    
+    // Obtengo el NSUserDefault
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    
+    // Saco las coordenadas
+    NSArray *coord = [userDef objectForKey:LAST_SELECTED_BOOK];
+    NSUInteger section = [[coord objectAtIndex:0] integerValue];
+    NSUInteger pos = [[coord objectAtIndex:1] integerValue];
+    
+    JESABook *book = [library libraryAtIndex:pos];
+    
+    return book;
+    
 }
 
 -(void) configureForPhoneWithModel:(JESALibrary *) model{

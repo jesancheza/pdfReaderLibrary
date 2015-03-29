@@ -54,6 +54,7 @@
 		EDC9B5DD1AC84C1F00B8B2FB /* JESABookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JESABookViewController.h; sourceTree = "<group>"; };
 		EDC9B5DE1AC84C1F00B8B2FB /* JESABookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JESABookViewController.m; sourceTree = "<group>"; };
 		EDC9B5DF1AC84C1F00B8B2FB /* JESABookViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JESABookViewController.xib; sourceTree = "<group>"; };
+		EDC9B5E21AC87BE600B8B2FB /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +104,7 @@
 				EDC3EDC31AC6B470003DBEC4 /* LaunchScreen.xib */,
 				EDC3EDBA1AC6B470003DBEC4 /* Supporting Files */,
 				EDC3EDDD1AC6B4F4003DBEC4 /* Model */,
+				EDC9B5E21AC87BE600B8B2FB /* Settings.h */,
 			);
 			path = pdfReaderLibrary;
 			sourceTree = "<group>";
