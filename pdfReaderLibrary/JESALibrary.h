@@ -11,14 +11,14 @@
 
 @interface JESALibrary : NSObject
 
-@property(nonatomic, readonly) NSUInteger booksCount;
-
 -(id) initWithModel:(NSData *) data;
--(JESABook *) libraryAtIndex:(NSUInteger) index;
 
-//-(NSArray *) tags;
-//-(NSUInteger) bookCountForTag:(NSString *) tag;
-//-(NSArray *) booksForTag:(NSString *) tag;
-//-(JESABook *) bookForTag:(NSString *) tag atIndex:(NSUInteger) index;
+-(JESABook *) libraryAtIndex:(NSUInteger) index;
+-(NSUInteger) booksCount;
+-(NSArray *) tags;
+
+-(NSUInteger) bookCountForTag:(NSString *) tag;
+-(NSArray *) booksForTag:(NSString *) tag;
+-(JESABook *) bookForTag:(NSString *) tag atIndex:(NSUInteger) index;
 
 @end
