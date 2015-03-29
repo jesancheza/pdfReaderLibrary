@@ -18,6 +18,7 @@
 @property(nonatomic, strong) NSArray *authors;
 
 @property(nonatomic, strong) UIImage *photo;
+@property(nonatomic, copy) NSString *authorsList;
 
 // Métodos de clase
 +(id) bookWithTitle:(NSString *) title

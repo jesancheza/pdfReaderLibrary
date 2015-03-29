@@ -11,7 +11,7 @@
 @implementation JESABook
 
 #pragma marl - Properties
--(id)photo{
+-(UIImage *)photo{
     //  Averiguar la url a la carpeta Document
     NSFileManager *fm = [NSFileManager defaultManager];
     NSArray *urls = [fm URLsForDirectory:NSDocumentDirectory
@@ -28,6 +28,10 @@
                                            error:&err];
     
     return [UIImage imageWithData:data];
+}
+
+-(NSString *) authorsList{
+    return [self.authors componentsJoinedByString:@", "];
 }
 
 #pragma mark - Class Methods

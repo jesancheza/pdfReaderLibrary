@@ -33,30 +33,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Toolbar
-    [self.navigationController setToolbarHidden:NO];
-    
-    // Creamos botones para el toolbar
-    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithTitle: @"Order Alfabético"
-                                                                     style: UIBarButtonItemStyleDone
-                                                                    target: self
-                                                                    action: @selector(orderLibraryAlphabetically)];
-    
-    UIBarButtonItem *buttonNext = [[UIBarButtonItem alloc] initWithTitle:@"Por temas"
-                                                                  style:UIBarButtonItemStyleDone
-                                                                 target:self
-                                                                 action:@selector(orderLibraryByTags)];
-    
-    // Botón de espacio
-    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                                                           target:nil
-                                                                           action:nil];
-    
-    // Añadimos botones al toolbar
-    self.toolbarItems = @[buttonItem, space, buttonNext];
-    
-    
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -66,6 +42,28 @@
 
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    // Toolbar
+    [self.navigationController setToolbarHidden:NO];
+    
+    // Creamos botones para el toolbar
+    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithTitle: @"Order Alfabético"
+                                                                   style: UIBarButtonItemStyleDone
+                                                                  target: self
+                                                                  action: @selector(orderLibraryAlphabetically)];
+    
+    UIBarButtonItem *buttonNext = [[UIBarButtonItem alloc] initWithTitle:@"Por temas"
+                                                                   style:UIBarButtonItemStyleDone
+                                                                  target:self
+                                                                  action:@selector(orderLibraryByTags)];
+    
+    // Botón de espacio
+    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                           target:nil
+                                                                           action:nil];
+    
+    // Añadimos botones al toolbar
+    self.toolbarItems = @[buttonItem, space, buttonNext];
     
     // Registramos en nib
     UINib *cellNib = [UINib nibWithNibName:@"JESABookCellView"
@@ -116,6 +114,7 @@
     // Sincronizamos library -> Celda
     cell.title.text = book.title;
     cell.photoView.image = book.photo;
+    cell.authors.text = book.authorsList;
     
     return cell;
 }
