@@ -9,6 +9,7 @@
 #import "JESALibraryTableViewController.h"
 #import "JESALibrary.h"
 #import "JESABook.h"
+#import "JESABookCellView.h"
 
 @interface JESALibraryTableViewController ()
 
@@ -17,17 +18,43 @@
 @implementation JESALibraryTableViewController
 
 #pragma mark - Init
--(id) initWithModel:(JESALibrary *) model{
-    if (self = [super initWithNibName:nil
-                               bundle:nil]) {
+-(id) initWithModel:(JESALibrary *) model
+              style:(UITableViewStyle) style{
+    
+    if (self = [super initWithStyle:style]) {
         _model = model;
         self.title = @"Library";
     }
     return self;
 }
 
+#pragma mark - Life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Toolbar
+    [self.navigationController setToolbarHidden:NO];
+    
+    // Creamos botones para el toolbar
+    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithTitle: @"Order Alfabético"
+                                                                     style: UIBarButtonItemStyleDone
+                                                                    target: self
+                                                                    action: @selector(orderLibraryAlphabetically)];
+    
+    UIBarButtonItem *buttonNext = [[UIBarButtonItem alloc] initWithTitle:@"Por temas"
+                                                                  style:UIBarButtonItemStyleDone
+                                                                 target:self
+                                                                 action:@selector(orderLibraryByTags)];
+    
+    // Botón de espacio
+    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                           target:nil
+                                                                           action:nil];
+    
+    // Añadimos botones al toolbar
+    self.toolbarItems = @[buttonItem, space, buttonNext];
+    
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -36,6 +63,27 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+-(void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    // Registramos en nib
+    UINib *cellNib = [UINib nibWithNibName:@"JESABookCellView"
+                                    bundle:nil];
+    
+    [self.tableView registerNib:cellNib
+         forCellReuseIdentifier:[JESABookCellView cellId]];
+}
+
+#pragma mark - Actions
+-(void)orderLibraryAlphabetically{
+    
+}
+
+-(void)orderLibraryByTags{
+    
+}
+
+#pragma mark - Memory
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -61,16 +109,11 @@
     // Recuperamos el modelo
     JESABook *book = [self.model libraryAtIndex:indexPath.row];
     
-    static NSString *cellId = @"libraryCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    // Creamos una celda
+    JESABookCellView *cell = [tableView dequeueReusableCellWithIdentifier:[JESABookCellView cellId]];
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                      reuseIdentifier:cellId];
-    }
-
-    cell.textLabel.text = book.title;
-    cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:book.imageURL]];
+    // Sincronizamos library -> Celda
+    cell.title.text = book.title;
     
     //  Averiguar la url a la carpeta Document
     NSFileManager *fm = [NSFileManager defaultManager];
@@ -87,11 +130,14 @@
                                          options:NSDataReadingMappedIfSafe
                                            error:&err];
     
-    cell.imageView.image = [UIImage imageWithData:data];
+    cell.photoView.image = [UIImage imageWithData:data];
     
     return cell;
 }
 
-
+#pragma mark - TableView Delegate
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return [JESABookCellView cellHeight];
+}
 
 @end

@@ -1,4 +1,4 @@
-//
+// S//
 //  JESALibrary.m
 //  pdfReaderLibrary
 //
@@ -41,6 +41,10 @@
                     }
                     
                 }
+                // Ordenamos la librería
+                NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+                self.library = [[self.library sortedArrayUsingDescriptors:@[sort]]mutableCopy];
+                
             }else{
                 NSLog(@"Error al parsear el JSON: %@", err.userInfo);
             }

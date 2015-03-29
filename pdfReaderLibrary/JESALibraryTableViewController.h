@@ -13,6 +13,6 @@
 
 @property(nonatomic, strong) JESALibrary *model;
 
--(id) initWithModel:(JESALibrary *) model;
+-(id) initWithModel:(JESALibrary *) model style:(UITableViewStyle) style;
 
 @end

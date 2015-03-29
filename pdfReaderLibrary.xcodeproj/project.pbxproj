@@ -15,6 +15,8 @@
 		EDC3EDDC1AC6B4EE003DBEC4 /* JESABook.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC3EDDB1AC6B4EE003DBEC4 /* JESABook.m */; };
 		EDC3EDE01AC6C1C8003DBEC4 /* JESALibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC3EDDF1AC6C1C8003DBEC4 /* JESALibrary.m */; };
 		EDC3EDE71AC6F1A6003DBEC4 /* JESALibraryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC3EDE61AC6F1A6003DBEC4 /* JESALibraryTableViewController.m */; };
+		EDC3EDED1AC82E8B003DBEC4 /* JESABookCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC3EDEC1AC82E8B003DBEC4 /* JESABookCellView.m */; };
+		EDC3EDF11AC839F7003DBEC4 /* JESABookCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC3EDF01AC839F7003DBEC4 /* JESABookCellView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,9 @@
 		EDC3EDDF1AC6C1C8003DBEC4 /* JESALibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JESALibrary.m; sourceTree = "<group>"; };
 		EDC3EDE51AC6F1A6003DBEC4 /* JESALibraryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JESALibraryTableViewController.h; sourceTree = "<group>"; };
 		EDC3EDE61AC6F1A6003DBEC4 /* JESALibraryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JESALibraryTableViewController.m; sourceTree = "<group>"; };
+		EDC3EDEB1AC82E8B003DBEC4 /* JESABookCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JESABookCellView.h; sourceTree = "<group>"; };
+		EDC3EDEC1AC82E8B003DBEC4 /* JESABookCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JESABookCellView.m; sourceTree = "<group>"; };
+		EDC3EDF01AC839F7003DBEC4 /* JESABookCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JESABookCellView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +90,7 @@
 		EDC3EDB91AC6B470003DBEC4 /* pdfReaderLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				EDC3EDE81AC82C4E003DBEC4 /* Views */,
 				EDC3EDE11AC6F0ED003DBEC4 /* Controllers */,
 				EDC3EDBE1AC6B470003DBEC4 /* AppDelegate.h */,
 				EDC3EDBF1AC6B470003DBEC4 /* AppDelegate.m */,
@@ -140,6 +146,16 @@
 				EDC3EDE61AC6F1A6003DBEC4 /* JESALibraryTableViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		EDC3EDE81AC82C4E003DBEC4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EDC3EDEB1AC82E8B003DBEC4 /* JESABookCellView.h */,
+				EDC3EDEC1AC82E8B003DBEC4 /* JESABookCellView.m */,
+				EDC3EDF01AC839F7003DBEC4 /* JESABookCellView.xib */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDC3EDC51AC6B470003DBEC4 /* LaunchScreen.xib in Resources */,
+				EDC3EDF11AC839F7003DBEC4 /* JESABookCellView.xib in Resources */,
 				EDC3EDC21AC6B470003DBEC4 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,6 +260,7 @@
 			files = (
 				EDC3EDE01AC6C1C8003DBEC4 /* JESALibrary.m in Sources */,
 				EDC3EDC01AC6B470003DBEC4 /* AppDelegate.m in Sources */,
+				EDC3EDED1AC82E8B003DBEC4 /* JESABookCellView.m in Sources */,
 				EDC3EDBD1AC6B470003DBEC4 /* main.m in Sources */,
 				EDC3EDDC1AC6B4EE003DBEC4 /* JESABook.m in Sources */,
 				EDC3EDE71AC6F1A6003DBEC4 /* JESALibraryTableViewController.m in Sources */,

@@ -39,8 +39,8 @@
     JESALibrary *model = [[JESALibrary alloc] initWithModel:data];
     
     // Creamos el controlador
-    JESALibraryTableViewController *lVC = [[JESALibraryTableViewController alloc] initWithModel:model];
-    
+    JESALibraryTableViewController *lVC = [[JESALibraryTableViewController alloc] initWithModel:model
+                                                                                          style:UITableViewStylePlain];
     // Creamos un combinador
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:lVC];
     
