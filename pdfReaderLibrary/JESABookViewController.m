@@ -46,6 +46,7 @@
 #pragma mark - Utils
 -(void) syncViewWithModel{
     self.titleView.text = self.model.title;
+    self.photoView.image = self.model.photo;
 }
 
 @end

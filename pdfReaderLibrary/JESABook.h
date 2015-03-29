@@ -7,6 +7,7 @@
 //
 
 @import Foundation;
+@import UIKit;
 
 @interface JESABook : NSObject
 
@@ -15,6 +16,8 @@
 @property(nonatomic, strong) NSURL *bookURL;
 @property(nonatomic, strong) NSArray *tags;
 @property(nonatomic, strong) NSArray *authors;
+
+@property(nonatomic, strong) UIImage *photo;
 
 // Métodos de clase
 +(id) bookWithTitle:(NSString *) title

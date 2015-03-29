@@ -10,6 +10,26 @@
 
 @implementation JESABook
 
+#pragma marl - Properties
+-(id)photo{
+    //  Averiguar la url a la carpeta Document
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSArray *urls = [fm URLsForDirectory:NSDocumentDirectory
+                               inDomains:NSUserDomainMask];
+    
+    NSURL *url = [urls lastObject];
+    
+    NSString *titleImage = [NSString stringWithFormat:@"%@.jpg", self.title];
+    url = [url URLByAppendingPathComponent:titleImage];
+    
+    NSError *err;
+    NSData *data = [NSData dataWithContentsOfURL:url
+                                         options:NSDataReadingMappedIfSafe
+                                           error:&err];
+    
+    return [UIImage imageWithData:data];
+}
+
 #pragma mark - Class Methods
 +(id) bookWithTitle:(NSString *) title
            imageURL:(NSURL *) imageURL
@@ -55,8 +75,6 @@
     
     
     NSArray *tags = [tagsJSON componentsSeparatedByString:@","];
-    
-    
     
     return tags;
 }
