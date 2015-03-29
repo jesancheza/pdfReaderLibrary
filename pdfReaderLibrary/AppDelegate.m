@@ -21,7 +21,17 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    [self downloadData];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if (![defaults objectForKey:@"first"]) {
+        
+        [defaults setObject:@"1"
+                     forKey:@"first"];
+        
+        [defaults synchronize];
+        
+        [self downloadData];
+    }
     
     NSData *data = [self loadJSON];
     
@@ -74,11 +84,64 @@
     NSArray *urls = [fm URLsForDirectory:NSDocumentDirectory
                                inDomains:NSUserDomainMask];
     
-    NSURL *url = [urls lastObject];
+    NSURL *url = nil;
+    
+    // Recuperamos JSON
+    NSError *err;
+    NSArray * JSONObjects = [NSJSONSerialization JSONObjectWithData:data
+                                                            options:NSJSONReadingMutableContainers
+                                                              error:&err];
+    if (JSONObjects != nil) {
+        // Recorremos el JSON
+        for (NSDictionary *dic in JSONObjects) {
+            
+            // Recumeramos la imagen
+            NSURL *image = [NSURL URLWithString:[dic objectForKey:@"image_url"]];
+            
+            NSData *imageData = [NSData dataWithContentsOfURL:image];
+            
+            
+            // Guardamos la imagen en Document
+            NSString *titleImage = [NSString stringWithFormat:@"%@.jpg", [dic objectForKey:@"title"]];
+            url = [urls lastObject];
+            url = [url URLByAppendingPathComponent:titleImage];
+            BOOL rcI = [imageData writeToURL:url
+                                     options:NSDataWritingAtomic
+                                       error:&err];
+            
+            // Comprobamos si ha ocurrido algún error
+            if (rcI == NO) {
+                // Error
+                NSLog(@"Error al guardar la imagen: %@", err.userInfo);
+            }else{
+                // No ocurrio error
+                NSLog(@"Imagen guardado correctamente.");
+            }
+            
+            /*
+            NSURL *pdf = [NSURL URLWithString:[dic objectForKey:@"pdf_url"]];
+             
+            NSData *pdfData = [NSData dataWithContentsOfURL:pdf];
+             
+            NSString *titlePdf = [NSString stringWithFormat:@"%@.pdf", [dic objectForKey:@"title"]];
+            url = [urls lastObject];
+            url = [url URLByAppendingPathComponent:titlePdf];
+            BOOL rcP = [pdfData writeToURL:url
+                                   options:NSDataWritingAtomic
+                                     error:&err];
+            
+            if (rcP == NO) {
+                NSLog(@"Error al guardar el pdf: %@", err.userInfo);
+            }else{
+                NSLog(@"PDF guardado correctamente.");
+            }*/
+        }
+    }
+    
+    url = [urls lastObject];
     
     url = [url URLByAppendingPathComponent:@"books.json"];
     // Guardamos el JSON en Documents
-    NSError *err = nil;
     BOOL rc = [data writeToURL:url
                        options:NSDataWritingAtomic
                          error:&err];

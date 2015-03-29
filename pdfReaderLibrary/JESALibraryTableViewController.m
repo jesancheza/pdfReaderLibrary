@@ -72,6 +72,23 @@
     cell.textLabel.text = book.title;
     cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:book.imageURL]];
     
+    //  Averiguar la url a la carpeta Document
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSArray *urls = [fm URLsForDirectory:NSDocumentDirectory
+                               inDomains:NSUserDomainMask];
+    
+    NSURL *url = [urls lastObject];
+    
+    NSString *titleImage = [NSString stringWithFormat:@"%@.jpg", book.title];
+    url = [url URLByAppendingPathComponent:titleImage];
+    
+    NSError *err;
+    NSData *data = [NSData dataWithContentsOfURL:url
+                                         options:NSDataReadingMappedIfSafe
+                                           error:&err];
+    
+    cell.imageView.image = [UIImage imageWithData:data];
+    
     return cell;
 }
 
