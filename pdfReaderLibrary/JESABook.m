@@ -34,6 +34,10 @@
     return [self.authors componentsJoinedByString:@", "];
 }
 
+-(NSString *) tagsList{
+    return [self.tags componentsJoinedByString:@", "];
+}
+
 #pragma mark - Class Methods
 +(id) bookWithTitle:(NSString *) title
            imageURL:(NSURL *) imageURL

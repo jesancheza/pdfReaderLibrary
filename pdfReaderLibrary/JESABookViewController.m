@@ -47,6 +47,8 @@
 -(void) syncViewWithModel{
     self.titleView.text = self.model.title;
     self.photoView.image = self.model.photo;
+    self.authorsView.text = self.model.authorsList;
+    self.tagsView.text = self.model.tagsList;
 }
 
 @end

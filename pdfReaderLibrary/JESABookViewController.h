@@ -13,6 +13,8 @@
 
 @property(nonatomic, weak) IBOutlet UILabel *titleView;
 @property(nonatomic, weak) IBOutlet UIImageView *photoView;
+@property(nonatomic, weak) IBOutlet UILabel *authorsView;
+@property(nonatomic, weak) IBOutlet UILabel *tagsView;
 
 @property(nonatomic,strong) JESABook *model;
 
