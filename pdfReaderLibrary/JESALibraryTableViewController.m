@@ -113,8 +113,9 @@
     JESABookCellView *cell = [tableView dequeueReusableCellWithIdentifier:[JESABookCellView cellId]];
     if (cell == nil) {
         // La tenemos que crear nosotros desde cero.
-        cell = [[JESABookCellView alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                      reuseIdentifier:[JESABookCellView cellId]];
+        [tableView registerNib:[UINib nibWithNibName:@"JESABookCellView" bundle:nil]
+        forCellReuseIdentifier:[JESABookCellView cellId]];
+        cell = [tableView dequeueReusableCellWithIdentifier:[JESABookCellView cellId]];
     }
     
     // Sincronizamos library -> Celda
