@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "JESALibrary.h"
 #import "JESALibraryTableViewController.h"
+#import "JESABookViewController.h"
 
 @interface AppDelegate ()
 
@@ -38,13 +39,13 @@
     // Creamos el modelo
     JESALibrary *model = [[JESALibrary alloc] initWithModel:data];
     
-    // Creamos el controlador
-    JESALibraryTableViewController *lVC = [[JESALibraryTableViewController alloc] initWithModel:model
-                                                                                          style:UITableViewStylePlain];
-    // Creamos un combinador
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:lVC];
     
-    self.window.rootViewController = nav;
+    // Identificamos si usamos pantalla grande o pequeña
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        [self configureForPadWithModel:model];
+    }else{
+        [self configureForPhoneWithModel:model];
+    }
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -71,6 +72,36 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(void) configureForPadWithModel:(JESALibrary *) model{
+    // Creamos los controladores
+    JESALibraryTableViewController *lVC = [[JESALibraryTableViewController alloc] initWithModel:model
+                                                                                          style:UITableViewStylePlain];
+    JESABookViewController *bVC = [[JESABookViewController alloc] initWithModel:[model libraryAtIndex:0]];
+    
+    // Creamos los navigations
+    UINavigationController *lNav = [[UINavigationController alloc] initWithRootViewController:lVC];
+    UINavigationController *bNav = [[UINavigationController alloc] initWithRootViewController:bVC];
+    
+    // Creamos un combinador
+    UISplitViewController *spltVC = [[UISplitViewController alloc] init];
+    spltVC.viewControllers = @[lNav, bNav];
+    
+    spltVC.delegate = bVC;
+    lVC.delegate = bVC;
+    
+    self.window.rootViewController = spltVC;
+}
+
+-(void) configureForPhoneWithModel:(JESALibrary *) model{
+    // Creamos el controlador
+    JESALibraryTableViewController *lVC = [[JESALibraryTableViewController alloc] initWithModel:model
+                                                                                          style:UITableViewStylePlain];
+    // Creamos un combinador
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:lVC];
+    
+    self.window.rootViewController = nav;
 }
 
 -(void) downloadData{

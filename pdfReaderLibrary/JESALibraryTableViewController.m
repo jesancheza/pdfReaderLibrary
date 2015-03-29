@@ -110,6 +110,11 @@
     
     // Creamos una celda
     JESABookCellView *cell = [tableView dequeueReusableCellWithIdentifier:[JESABookCellView cellId]];
+    if (cell == nil) {
+        // La tenemos que crear nosotros desde cero.
+        cell = [[JESABookCellView alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                      reuseIdentifier:[JESABookCellView cellId]];
+    }
     
     // Sincronizamos library -> Celda
     cell.title.text = book.title;
@@ -123,15 +128,17 @@
  
     JESABook *book = [self.model libraryAtIndex:indexPath.row];
     
-    JESABookViewController *bVC = [[JESABookViewController alloc] initWithModel:book];
-    
-    [self.navigationController pushViewController:bVC
-                                         animated:YES];
+    // Mandamos el mensaje al delegado si lo entiende
+    if ([self.delegate respondsToSelector:@selector(libraryTableViewController:didSelectBook:)]) {
+        [self.delegate libraryTableViewController:self
+                                    didSelectBook:book];
+    }
 }
 
 #pragma mark - TableView Delegate
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [JESABookCellView cellHeight];
 }
+
 
 @end
