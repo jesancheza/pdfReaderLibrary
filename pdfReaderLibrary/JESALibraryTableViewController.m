@@ -10,6 +10,7 @@
 #import "JESALibrary.h"
 #import "JESABook.h"
 #import "JESABookCellView.h"
+#import "JESABookViewController.h"
 
 @interface JESALibraryTableViewController ()
 
@@ -133,6 +134,16 @@
     cell.photoView.image = [UIImage imageWithData:data];
     
     return cell;
+}
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+ 
+    JESABook *book = [self.model libraryAtIndex:indexPath.row];
+    
+    JESABookViewController *bVC = [[JESABookViewController alloc] initWithModel:book];
+    
+    [self.navigationController pushViewController:bVC
+                                         animated:YES];
 }
 
 #pragma mark - TableView Delegate
