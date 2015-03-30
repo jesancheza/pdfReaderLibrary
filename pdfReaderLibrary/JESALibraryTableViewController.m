@@ -15,6 +15,8 @@
 
 @interface JESALibraryTableViewController ()
 
+@property(nonatomic) int libraryOrder;
+
 @end
 
 @implementation JESALibraryTableViewController
@@ -76,11 +78,19 @@
 
 #pragma mark - Actions
 -(void)orderLibraryAlphabetically{
+    self.libraryOrder = LIBRARY_ORDER_ALFABETICALLY;
     
+    NSLog(@"Ordenamos alfabéticamente.");
+    
+    [self.tableView reloadData];
 }
 
 -(void)orderLibraryByTags{
+    self.libraryOrder = LIBRARY_ORDER_TAGS;
     
+    NSLog(@"Ordenamos por temática.");
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Memory
@@ -94,20 +104,37 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
     // Return the number of sections.
-    return 1;
+    if(self.libraryOrder == LIBRARY_ORDER_ALFABETICALLY){
+        return 2;
+    }else{
+        return [self.model tagsCount];
+    }
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     // Return the number of rows in the section.
-    return [self.model booksCount];
+    if (self.libraryOrder == LIBRARY_ORDER_ALFABETICALLY) {
+        return [self.model booksCount];
+    }else{
+        return [self.model bookCountForTagInt:section];
+    }
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // Recuperamos el modelo
-    JESABook *book = [self.model libraryAtIndex:indexPath.row];
+    JESABook *book;
+    if (self.libraryOrder == LIBRARY_ORDER_ALFABETICALLY) {
+        if (indexPath.section == SECTION_ALL) {
+            book = [self.model libraryAtIndex:indexPath.row];
+        }
+    }else{
+        book = [self.model bookForTagPos:indexPath.section atIndex:indexPath.row];
+    }
+    
     
     // Creamos una celda
     JESABookCellView *cell = [tableView dequeueReusableCellWithIdentifier:[JESABookCellView cellId]];
@@ -142,6 +169,18 @@
     if ([self.delegate respondsToSelector:@selector(libraryTableViewController:didSelectBook:)]) {
         [self.delegate libraryTableViewController:self
                                     didSelectBook:book];
+    }
+}
+
+-(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if (self.libraryOrder == LIBRARY_ORDER_ALFABETICALLY) {
+        if (section == SECTION_FAVOURITE) {
+            return [self.model tagNameSection:section];
+        }else{
+            return @"Todos";
+        }
+    }else{
+        return [self.model tagNameSection:section];
     }
 }
 

@@ -21,4 +21,9 @@
 -(NSArray *) booksForTag:(NSString *) tag;
 -(JESABook *) bookForTag:(NSString *) tag atIndex:(NSUInteger) index;
 
+-(NSUInteger) tagsCount;
+-(NSUInteger) bookCountForTagInt:(NSUInteger) tag;
+-(NSString *) tagNameSection:(NSUInteger) section;
+-(JESABook *) bookForTagPos:(NSUInteger) tagPos atIndex:(NSUInteger) index;
+
 @end

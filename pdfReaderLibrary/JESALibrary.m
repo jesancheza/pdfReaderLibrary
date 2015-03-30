@@ -38,8 +38,8 @@
                     }
                     
                     // Añado el tag Favoritos
-                    self.booksForTags = [NSMutableDictionary dictionaryWithObject:@[]
-                                                                           forKey:@"Favoritos"];
+                    //self.booksForTags = [NSMutableDictionary dictionaryWithObject:@[]
+                    //                                                       forKey:@"Favoritos"];
                     
                     for (NSString *tag in book.tags) {
                         NSArray *books;
@@ -91,7 +91,11 @@
     // Ordenamos los tags
     tags = [tags sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     
-    return tags;
+    // Insertamos el tag Favoritos
+    NSMutableArray *mutableTags = [tags mutableCopy];
+    [mutableTags insertObject:@"Favoritos" atIndex:0];
+    
+    return mutableTags;
 }
 
 -(NSUInteger) bookCountForTag:(NSString *) tag{
@@ -121,6 +125,28 @@
     NSArray *tags = [self booksForTag:tag];
     
     return [tags objectAtIndex:index];
+}
+
+-(NSUInteger) tagsCount{
+    return [self.tags count];
+}
+
+-(NSUInteger) bookCountForTagInt:(NSUInteger) tagPos{
+    NSString *tagName = [self.tags objectAtIndex:tagPos];
+    return [self bookCountForTag:tagName];
+}
+
+-(NSString *) tagNameSection:(NSUInteger) section{
+    NSArray *tags = [self tags];
+    NSString *tagName = [tags objectAtIndex:section];
+    
+    return tagName;
+}
+
+-(JESABook *) bookForTagPos:(NSUInteger) tagPos atIndex:(NSUInteger) index{
+    NSString *tagName = [self tagNameSection:tagPos];
+    return [self bookForTag:tagName atIndex:index];
+    
 }
 
 @end

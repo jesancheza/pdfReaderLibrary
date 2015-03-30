@@ -8,3 +8,9 @@
 
 #define LAST_SELECTED_BOOK @"lastBook"
 #define FIRST_TIME @"firstTime"
+
+#define LIBRARY_ORDER_ALFABETICALLY 0
+#define LIBRARY_ORDER_TAGS 1
+
+#define SECTION_FAVOURITE 0
+#define SECTION_ALL 1
