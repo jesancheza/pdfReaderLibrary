@@ -37,6 +37,10 @@
                         [self.library addObject:book];
                     }
                     
+                    // Añado el tag Favoritos
+                    self.booksForTags = [NSMutableDictionary dictionaryWithObject:@[]
+                                                                           forKey:@"Favoritos"];
+                    
                     for (NSString *tag in book.tags) {
                         NSArray *books;
                         if ((books = [self.booksForTags objectForKey:tag])) {
@@ -94,11 +98,23 @@
     
     NSArray *books =[self.booksForTags objectForKey:tag];
     
-    return [books count];
+    if (books != nil) {
+        return [books count];
+    }else{
+        return 0;
+    }
+    
 }
 
 -(NSArray *) booksForTag:(NSString *) tag{
-    return [self.booksForTags objectForKey:tag];
+    NSArray *books = [self.booksForTags objectForKey:tag];
+    
+    if (books == nil || ([books count] == 0)) {
+        return nil;
+    }else{
+        return books;
+    }
+
 }
 
 -(JESABook *) bookForTag:(NSString *) tag atIndex:(NSUInteger) index{
