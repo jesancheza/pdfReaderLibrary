@@ -24,6 +24,6 @@
 @property(nonatomic, strong) JESALibrary *model;
 @property(weak, nonatomic) id<JESALibraryTableViewControllerDelegate> delegate;
 
--(id) initWithModel:(JESALibrary *) model style:(UITableViewStyle) style;
+-(id) initWithModel:(JESALibrary *) model style:(UITableViewStyle) style order:(int) order;
 
 @end

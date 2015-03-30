@@ -77,8 +77,11 @@
 
 -(void) configureForPadWithModel:(JESALibrary *) model{
     // Creamos los controladores
-    JESALibraryTableViewController *lVC = [[JESALibraryTableViewController alloc] initWithModel:model
-                                                                                          style:UITableViewStylePlain];
+    JESALibraryTableViewController *lVC = [[JESALibraryTableViewController alloc]
+                                           initWithModel:model
+                                           style:UITableViewStylePlain
+                                           order:[self lastLibraryOrderSelected]];
+    
     JESABookViewController *bVC = [[JESABookViewController alloc] initWithModel:[self lastSelectedBookInModel:model]];
     
     // Creamos los navigations
@@ -101,11 +104,23 @@
     NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
     
     // Saco las coordenadas
-    NSArray *coord = [userDef objectForKey:LAST_SELECTED_BOOK];
-    NSUInteger section = [[coord objectAtIndex:0] integerValue];
-    NSUInteger pos = [[coord objectAtIndex:1] integerValue];
+    JESABook *book;
+    if (![userDef objectForKey:LAST_SELECTED_BOOK]) {
+        book = [library libraryAtIndex:0];
+    }else{
+        NSArray *coord = [userDef objectForKey:LAST_SELECTED_BOOK];
+        NSUInteger section = [[coord objectAtIndex:0] integerValue];
+        NSUInteger pos = [[coord objectAtIndex:1] integerValue];
+        NSUInteger order = [[coord objectAtIndex:2] integerValue];
     
-    JESABook *book = [library libraryAtIndex:pos];
+    
+        if (order == LIBRARY_ORDER_ALFABETICALLY) {
+            book = [library libraryAtIndex:pos];
+        }else{
+            book = [library bookForTagPos:section
+                              atIndex:pos];
+        }
+    }
     
     return book;
     
@@ -113,12 +128,27 @@
 
 -(void) configureForPhoneWithModel:(JESALibrary *) model{
     // Creamos el controlador
-    JESALibraryTableViewController *lVC = [[JESALibraryTableViewController alloc] initWithModel:model
-                                                                                          style:UITableViewStylePlain];
+    JESALibraryTableViewController *lVC = [[JESALibraryTableViewController alloc]
+                                           initWithModel:model
+                                           style:UITableViewStylePlain
+                                           order:[self lastLibraryOrderSelected]];
     // Creamos un combinador
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:lVC];
     
     self.window.rootViewController = nav;
+}
+
+-(int) lastLibraryOrderSelected{
+    // Obtengo el NSUserDefault
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    
+    // Saco las coordenadas
+    if (![userDef objectForKey:ORDER_LIBRARY]) {
+        return 0;
+    }else{
+        NSString *order = [userDef objectForKey:ORDER_LIBRARY];
+        return [order intValue];
+    }
 }
 
 -(void) downloadData{

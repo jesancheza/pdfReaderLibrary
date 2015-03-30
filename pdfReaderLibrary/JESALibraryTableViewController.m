@@ -23,10 +23,12 @@
 
 #pragma mark - Init
 -(id) initWithModel:(JESALibrary *) model
-              style:(UITableViewStyle) style{
+              style:(UITableViewStyle) style
+              order:(int) order{
     
     if (self = [super initWithStyle:style]) {
         _model = model;
+        _libraryOrder = order;
         self.title = @"Library";
     }
     return self;
@@ -116,7 +118,11 @@
 
     // Return the number of rows in the section.
     if (self.libraryOrder == LIBRARY_ORDER_ALFABETICALLY) {
-        return [self.model booksCount];
+        if (section == SECTION_ALL) {
+            return [self.model booksCount];
+        }else{
+            return [self.model bookCountForTagInt:section];
+        }
     }else{
         return [self.model bookCountForTagInt:section];
     }
@@ -130,6 +136,8 @@
     if (self.libraryOrder == LIBRARY_ORDER_ALFABETICALLY) {
         if (indexPath.section == SECTION_ALL) {
             book = [self.model libraryAtIndex:indexPath.row];
+        }else{
+            book = [self.model bookForTagPos:indexPath.section atIndex:indexPath.row];
         }
     }else{
         book = [self.model bookForTagPos:indexPath.section atIndex:indexPath.row];
@@ -155,13 +163,25 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
  
-    JESABook *book = [self.model libraryAtIndex:indexPath.row];
+    JESABook *book;
+    if (self.libraryOrder == LIBRARY_ORDER_ALFABETICALLY) {
+        if (indexPath.section == SECTION_ALL) {
+            book = [self.model libraryAtIndex:indexPath.row];
+        }else{
+            book = [self.model bookForTagPos:indexPath.section atIndex:indexPath.row];
+        }
+    }else{
+        book = [self.model bookForTagPos:indexPath.section atIndex:indexPath.row];
+    }
     
     // Guardamos el último libro seleccionado
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    NSArray *coord = @[@(indexPath.section),@(indexPath.row)];
+    NSArray *coord = @[@(indexPath.section),@(indexPath.row),@(self.libraryOrder)];
     [defaults setObject:coord forKey:LAST_SELECTED_BOOK];
+    
+    NSString *order = [NSString stringWithFormat:@"%d",self.libraryOrder];
+    [defaults setObject:order forKey:ORDER_LIBRARY];
     
     [defaults synchronize];
     
