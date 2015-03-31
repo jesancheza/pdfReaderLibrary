@@ -11,6 +11,7 @@
 #import "JESALibraryTableViewController.h"
 #import "JESABookViewController.h"
 #import "Settings.h"
+#import "JESASandboxAndUserDefaultUtils.h"
 
 @interface AppDelegate ()
 
@@ -34,8 +35,9 @@
         
         [self downloadData];
     }
+    JESASandboxAndUserDefaultUtils *utilsSandbox = [JESASandboxAndUserDefaultUtils new];
     
-    NSData *data = [self loadJSON];
+    NSData *data = [utilsSandbox loadFileSandboxName:@"books.json"];
     
     // Creamos el modelo
     JESALibrary *model = [[JESALibrary alloc] initWithModel:data];
@@ -160,18 +162,14 @@
 
     NSData *data = [NSData dataWithContentsOfURL:urlJSON];
     
-    //  Averiguar la url a la carpeta Document
-    NSFileManager *fm = [NSFileManager defaultManager];
-    NSArray *urls = [fm URLsForDirectory:NSDocumentDirectory
-                               inDomains:NSUserDomainMask];
-    
-    NSURL *url = nil;
+    JESASandboxAndUserDefaultUtils *utilSandbox = [JESASandboxAndUserDefaultUtils new];
     
     // Recuperamos JSON
     NSError *err;
     NSArray * JSONObjects = [NSJSONSerialization JSONObjectWithData:data
                                                             options:NSJSONReadingMutableContainers
                                                               error:&err];
+    
     if (JSONObjects != nil) {
         // Recorremos el JSON
         for (NSDictionary *dic in JSONObjects) {
@@ -183,77 +181,15 @@
             
             
             // Guardamos la imagen en Document
-            NSString *titleImage = [NSString stringWithFormat:@"%@.jpg", [dic objectForKey:@"title"]];
-            url = [urls lastObject];
-            url = [url URLByAppendingPathComponent:titleImage];
-            BOOL rcI = [imageData writeToURL:url
-                                     options:NSDataWritingAtomic
-                                       error:&err];
-            
-            // Comprobamos si ha ocurrido algún error
-            if (rcI == NO) {
-                // Error
-                NSLog(@"Error al guardar la imagen: %@", err.userInfo);
-            }else{
-                // No ocurrio error
-                NSLog(@"Imagen guardado correctamente.");
-            }
-            
-            /*
-            NSURL *pdf = [NSURL URLWithString:[dic objectForKey:@"pdf_url"]];
-             
-            NSData *pdfData = [NSData dataWithContentsOfURL:pdf];
-             
-            NSString *titlePdf = [NSString stringWithFormat:@"%@.pdf", [dic objectForKey:@"title"]];
-            url = [urls lastObject];
-            url = [url URLByAppendingPathComponent:titlePdf];
-            BOOL rcP = [pdfData writeToURL:url
-                                   options:NSDataWritingAtomic
-                                     error:&err];
-            
-            if (rcP == NO) {
-                NSLog(@"Error al guardar el pdf: %@", err.userInfo);
-            }else{
-                NSLog(@"PDF guardado correctamente.");
-            }*/
+            [utilSandbox saveFileInSandboxName:[NSString stringWithFormat:@"%@.jpg", [dic objectForKey:@"title"]]
+                                          data:imageData];
         }
     }
     
-    url = [urls lastObject];
-    
-    url = [url URLByAppendingPathComponent:@"books.json"];
     // Guardamos el JSON en Documents
-    BOOL rc = [data writeToURL:url
-                       options:NSDataWritingAtomic
-                         error:&err];
+    [utilSandbox saveFileInSandboxName:@"books.json"
+                                  data:data];
     
-    // Comprobar que se guarda
-    if (rc == NO) {
-        // Error!
-        NSLog(@"Error al guardar el fichero JSON: %@", err.userInfo);
-    }else{
-        // No hubo error
-        NSLog(@"Se ha cargado correctamente");
-    }
-
-}
-
--(NSData *) loadJSON{
-    //  Averiguar la url a la carpeta Document
-    NSFileManager *fm = [NSFileManager defaultManager];
-    NSArray *urls = [fm URLsForDirectory:NSDocumentDirectory
-                               inDomains:NSUserDomainMask];
-    
-    NSURL *url = [urls lastObject];
-    
-    url = [url URLByAppendingPathComponent:@"books.json"];
-    
-    NSError *err;
-    NSData *data = [NSData dataWithContentsOfURL:url
-                                         options:NSDataReadingMappedIfSafe
-                                           error:&err];
-    
-    return data;
 }
 
 @end

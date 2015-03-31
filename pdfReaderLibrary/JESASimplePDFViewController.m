@@ -125,9 +125,10 @@
     }else{
         // Si no está guardado lo recuperamos de internet
         NSError *err;
-        NSData *dataOnline = [NSData dataWithContentsOfURL:self.model.bookURL
-                                                   options:NSDataReadingMappedIfSafe
-                                                     error:&err];
+        NSData *dataOnline = [[NSData alloc] initWithContentsOfURL:self.model.bookURL
+                                                           options:NSDataReadingMappedIfSafe
+                                                             error:&err];
+        
         // Mostramos el pdf en el browser
         [self.browser loadData:dataOnline
                       MIMEType:@"application/pdf"
