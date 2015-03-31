@@ -124,23 +124,28 @@
                        baseURL:nil];
     }else{
         // Si no está guardado lo recuperamos de internet
-        NSError *err;
-        NSData *dataOnline = [[NSData alloc] initWithContentsOfURL:self.model.bookURL
-                                                           options:NSDataReadingMappedIfSafe
-                                                             error:&err];
+        dispatch_queue_t download = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         
-        // Mostramos el pdf en el browser
-        [self.browser loadData:dataOnline
-                      MIMEType:@"application/pdf"
-              textEncodingName:@"utf-8"
-                       baseURL:nil];
+        dispatch_async(download, ^{
+            NSError *err;
+            NSData *dataOnline = [[NSData alloc] initWithContentsOfURL:self.model.bookURL
+                                                               options:NSDataReadingMappedIfSafe
+                                                                 error:&err];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // Mostramos el pdf en el browser
+                [self.browser loadData:dataOnline
+                              MIMEType:@"application/pdf"
+                      textEncodingName:@"utf-8"
+                               baseURL:nil];
         
-        // Guardamos el pdf en local
-        [utilSandbox saveFileInSandboxName:[NSString stringWithFormat:@"%@.pdf", self.model.title] data:dataOnline];
+                // Guardamos el pdf en local
+                [utilSandbox saveFileInSandboxName:[NSString stringWithFormat:@"%@.pdf", self.model.title]
+                                              data:dataOnline];
+                
+            });
+        });
     }
-    
-    
-    //[self.browser loadRequest:[NSURLRequest requestWithURL:self.model.bookURL]];
     
 }
 
