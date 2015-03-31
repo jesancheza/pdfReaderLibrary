@@ -19,7 +19,7 @@
 
 @end
 
-@interface JESALibraryTableViewController : UITableViewController
+@interface JESALibraryTableViewController : UITableViewController <JESALibraryTableViewControllerDelegate>
 
 @property(nonatomic, strong) JESALibrary *model;
 @property(weak, nonatomic) id<JESALibraryTableViewControllerDelegate> delegate;

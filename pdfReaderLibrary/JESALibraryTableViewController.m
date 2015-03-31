@@ -221,5 +221,14 @@
     return [JESABookCellView cellHeight];
 }
 
+#pragma mark - JESALibraryTableViewControllerDelegate
+-(void) libraryTableViewController:(JESALibraryTableViewController *) uVC didSelectBook:(JESABook *) book{
+    // Creamos un bookVC
+    JESABookViewController *bookVC = [[JESABookViewController alloc] initWithModel:book];
+    
+    // Hago un push
+    [self.navigationController pushViewController:bookVC
+                                         animated:YES];
+}
 
 @end

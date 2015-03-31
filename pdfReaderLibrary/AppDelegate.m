@@ -135,6 +135,9 @@
     // Creamos un combinador
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:lVC];
     
+    // Asignamos delegados
+    lVC.delegate = lVC;
+    
     self.window.rootViewController = nav;
 }
 
