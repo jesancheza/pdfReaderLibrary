@@ -9,6 +9,7 @@
 #import "JESASimplePDFViewController.h"
 #import "JESABook.h"
 #import "Settings.h"
+#import "JESASandboxAndUserDefaultUtils.h"
 
 @interface JESASimplePDFViewController ()
 
@@ -111,7 +112,34 @@
     [self.activityView setHidden:NO];
     [self.activityView startAnimating];
     
-    [self.browser loadRequest:[NSURLRequest requestWithURL:self.model.bookURL]];
+    // Intengamos leer el pdf de local
+    JESASandboxAndUserDefaultUtils *utilSandbox = [[JESASandboxAndUserDefaultUtils alloc] init];
+    NSData *data = [utilSandbox loadFileSandboxName:[NSString stringWithFormat:@"%@.pdf", self.model.title]];
+    
+    if (data) {
+        // Si ya está guardado
+        [self.browser loadData:data
+                      MIMEType:@"application/pdf"
+              textEncodingName:@"utf-8"
+                       baseURL:nil];
+    }else{
+        // Si no está guardado lo recuperamos de internet
+        NSError *err;
+        NSData *dataOnline = [NSData dataWithContentsOfURL:self.model.bookURL
+                                                   options:NSDataReadingMappedIfSafe
+                                                     error:&err];
+        // Mostramos el pdf en el browser
+        [self.browser loadData:dataOnline
+                      MIMEType:@"application/pdf"
+              textEncodingName:@"utf-8"
+                       baseURL:nil];
+        
+        // Guardamos el pdf en local
+        [utilSandbox saveFileInSandboxName:[NSString stringWithFormat:@"%@.pdf", self.model.title] data:dataOnline];
+    }
+    
+    
+    //[self.browser loadRequest:[NSURLRequest requestWithURL:self.model.bookURL]];
     
 }
 
