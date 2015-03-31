@@ -185,6 +185,18 @@
     
     [defaults synchronize];
     
+    // mandamos una notificación
+    NSDictionary *extraInfo = [NSDictionary dictionaryWithObjects:@[book]
+                                                          forKeys:@[BOOK_KEY]];
+    
+    // Creamos la notificación
+    NSNotification *note = [NSNotification notificationWithName:BOOK_DID_CHANGE_NOTIFICATION_NAME
+                                                         object:self
+                                                       userInfo:extraInfo];
+    
+    // Mandamos la notificación
+    [[NSNotificationCenter defaultCenter] postNotification:note];
+    
     // Mandamos el mensaje al delegado si lo entiende
     if ([self.delegate respondsToSelector:@selector(libraryTableViewController:didSelectBook:)]) {
         [self.delegate libraryTableViewController:self

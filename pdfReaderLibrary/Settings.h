@@ -15,3 +15,6 @@
 
 #define SECTION_FAVOURITE 0
 #define SECTION_ALL 1
+
+#define BOOK_DID_CHANGE_NOTIFICATION_NAME @"bookDidChangeNotification"
+#define BOOK_KEY @"bookKey"

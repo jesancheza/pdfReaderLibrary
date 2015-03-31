@@ -20,5 +20,6 @@
 @property(nonatomic,strong) JESABook *model;
 
 -(id) initWithModel:(JESABook *) model;
+- (IBAction)displaySimplePDF:(id)sender;
 
 @end

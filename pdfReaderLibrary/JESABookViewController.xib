@@ -64,6 +64,9 @@
                     <state key="normal" title="Leer libro">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="displaySimplePDF:" destination="-1" eventType="touchUpInside" id="IYi-Sl-gJs"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

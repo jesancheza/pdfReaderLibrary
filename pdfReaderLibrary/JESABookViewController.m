@@ -8,6 +8,7 @@
 
 #import "JESABookViewController.h"
 #import "JESABook.h"
+#import "JESASimplePDFViewController.h"
 
 @interface JESABookViewController ()
 
@@ -23,6 +24,15 @@
         self.title = [model title];
     }
     return self;
+}
+
+#pragma mark - Actions
+- (IBAction)displaySimplePDF:(id)sender {
+    // Crear un simplePDFVC
+    JESASimplePDFViewController *pVC = [[JESASimplePDFViewController alloc] initWithModel:self.model];
+    
+    // Hacer un push
+    [self.navigationController pushViewController:pVC animated:YES];
 }
 
 #pragma mark - View Lifecycle

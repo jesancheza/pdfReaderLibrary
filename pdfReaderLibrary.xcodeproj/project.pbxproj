@@ -19,6 +19,8 @@
 		EDC3EDF11AC839F7003DBEC4 /* JESABookCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC3EDF01AC839F7003DBEC4 /* JESABookCellView.xib */; };
 		EDC9B5E01AC84C1F00B8B2FB /* JESABookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC9B5DE1AC84C1F00B8B2FB /* JESABookViewController.m */; };
 		EDC9B5E11AC84C1F00B8B2FB /* JESABookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC9B5DF1AC84C1F00B8B2FB /* JESABookViewController.xib */; };
+		EDC9B5E61ACA6C3E00B8B2FB /* JESASimplePDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC9B5E41ACA6C3E00B8B2FB /* JESASimplePDFViewController.m */; };
+		EDC9B5E71ACA6C3E00B8B2FB /* JESASimplePDFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC9B5E51ACA6C3E00B8B2FB /* JESASimplePDFViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,9 @@
 		EDC9B5DE1AC84C1F00B8B2FB /* JESABookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JESABookViewController.m; sourceTree = "<group>"; };
 		EDC9B5DF1AC84C1F00B8B2FB /* JESABookViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JESABookViewController.xib; sourceTree = "<group>"; };
 		EDC9B5E21AC87BE600B8B2FB /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		EDC9B5E31ACA6C3E00B8B2FB /* JESASimplePDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JESASimplePDFViewController.h; sourceTree = "<group>"; };
+		EDC9B5E41ACA6C3E00B8B2FB /* JESASimplePDFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JESASimplePDFViewController.m; sourceTree = "<group>"; };
+		EDC9B5E51ACA6C3E00B8B2FB /* JESASimplePDFViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JESASimplePDFViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +159,9 @@
 				EDC9B5DD1AC84C1F00B8B2FB /* JESABookViewController.h */,
 				EDC9B5DE1AC84C1F00B8B2FB /* JESABookViewController.m */,
 				EDC9B5DF1AC84C1F00B8B2FB /* JESABookViewController.xib */,
+				EDC9B5E31ACA6C3E00B8B2FB /* JESASimplePDFViewController.h */,
+				EDC9B5E41ACA6C3E00B8B2FB /* JESASimplePDFViewController.m */,
+				EDC9B5E51ACA6C3E00B8B2FB /* JESASimplePDFViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -248,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDC9B5E71ACA6C3E00B8B2FB /* JESASimplePDFViewController.xib in Resources */,
 				EDC9B5E11AC84C1F00B8B2FB /* JESABookViewController.xib in Resources */,
 				EDC3EDC51AC6B470003DBEC4 /* LaunchScreen.xib in Resources */,
 				EDC3EDF11AC839F7003DBEC4 /* JESABookCellView.xib in Resources */,
@@ -275,6 +284,7 @@
 				EDC3EDBD1AC6B470003DBEC4 /* main.m in Sources */,
 				EDC9B5E01AC84C1F00B8B2FB /* JESABookViewController.m in Sources */,
 				EDC3EDDC1AC6B4EE003DBEC4 /* JESABook.m in Sources */,
+				EDC9B5E61ACA6C3E00B8B2FB /* JESASimplePDFViewController.m in Sources */,
 				EDC3EDE71AC6F1A6003DBEC4 /* JESALibraryTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
