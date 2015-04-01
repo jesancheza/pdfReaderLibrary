@@ -10,6 +10,7 @@
 
 @implementation JESASandboxAndUserDefaultUtils
 
+#pragma mark - Sandbox
 -(NSData *) loadFileSandboxName:(NSString *) name{
     //  Averiguar la url a la carpeta Document
     NSFileManager *fm = [NSFileManager defaultManager];
@@ -52,6 +53,22 @@
         // No ocurrio error
         NSLog(@"Archivo guardado correctamente.");
     }
+}
+
+#pragma mark - UserDefault
+-(id) isUserDefaultName:(NSString *) name{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    return [defaults objectForKey:name];
+}
+
+-(void) saveInUserDefaultName:(NSString *) name value:(id) value{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setObject:value
+                 forKey:name];
+    
+    [defaults synchronize];
 }
 
 @end

@@ -13,4 +13,7 @@
 -(NSData *) loadFileSandboxName:(NSString *) name;
 -(void) saveFileInSandboxName:(NSString *) name data:(NSData *) data;
 
+-(id) isUserDefaultName:(NSString *) name;
+-(void) saveInUserDefaultName:(NSString *) name value:(id) value;
+
 @end

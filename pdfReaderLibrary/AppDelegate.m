@@ -24,18 +24,15 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    JESASandboxAndUserDefaultUtils *utilsSandbox = [JESASandboxAndUserDefaultUtils new];
     
-    if (![defaults objectForKey:FIRST_TIME]) {
+    if (![utilsSandbox isUserDefaultName:FIRST_TIME]) {
         
-        [defaults setObject:@"1"
-                     forKey:FIRST_TIME];
-        
-        [defaults synchronize];
+        [utilsSandbox saveInUserDefaultName:FIRST_TIME value:@"1"];
         
         [self downloadData];
     }
-    JESASandboxAndUserDefaultUtils *utilsSandbox = [JESASandboxAndUserDefaultUtils new];
+    
     
     NSData *data = [utilsSandbox loadFileSandboxName:@"books.json"];
     

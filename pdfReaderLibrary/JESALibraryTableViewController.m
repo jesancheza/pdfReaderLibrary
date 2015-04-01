@@ -12,6 +12,7 @@
 #import "JESABookCellView.h"
 #import "JESABookViewController.h"
 #import "Settings.h"
+#import "JESASandboxAndUserDefaultUtils.h"
 
 @interface JESALibraryTableViewController ()
 
@@ -84,6 +85,12 @@
     
     NSLog(@"Ordenamos alfabéticamente.");
     
+    // Guardamos la ordenación de la tabla
+    JESASandboxAndUserDefaultUtils *utilSandbox = [JESASandboxAndUserDefaultUtils new];
+    NSString *order = [NSString stringWithFormat:@"%d",self.libraryOrder];
+    [utilSandbox saveInUserDefaultName:ORDER_LIBRARY value:order];
+
+    
     [self.tableView reloadData];
 }
 
@@ -91,6 +98,12 @@
     self.libraryOrder = LIBRARY_ORDER_TAGS;
     
     NSLog(@"Ordenamos por temática.");
+    
+    // Guardamos la ordenación de la tabla
+    JESASandboxAndUserDefaultUtils *utilSandbox = [JESASandboxAndUserDefaultUtils new];
+    NSString *order = [NSString stringWithFormat:@"%d",self.libraryOrder];
+    [utilSandbox saveInUserDefaultName:ORDER_LIBRARY value:order];
+
     
     [self.tableView reloadData];
 }
@@ -175,15 +188,10 @@
     }
     
     // Guardamos el último libro seleccionado
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    JESASandboxAndUserDefaultUtils *utilSandbox = [JESASandboxAndUserDefaultUtils new];
     
     NSArray *coord = @[@(indexPath.section),@(indexPath.row),@(self.libraryOrder)];
-    [defaults setObject:coord forKey:LAST_SELECTED_BOOK];
-    
-    NSString *order = [NSString stringWithFormat:@"%d",self.libraryOrder];
-    [defaults setObject:order forKey:ORDER_LIBRARY];
-    
-    [defaults synchronize];
+    [utilSandbox saveInUserDefaultName:LAST_SELECTED_BOOK value:coord];
     
     // mandamos una notificación
     NSDictionary *extraInfo = [NSDictionary dictionaryWithObjects:@[book]
