@@ -43,13 +43,15 @@
            imageURL:(NSURL *) imageURL
             bookURL:(NSURL *) bookURL
                tags:(NSArray *) tags
-            authors:(NSArray *) authors{
+            authors:(NSArray *) authors
+         isFavorite:(bool) isFavorite{
     
     return [[self alloc] initWithTitle:title
                               imageURL:imageURL
                                bookURL:bookURL
                                   tags:tags
-                               authors:authors];
+                               authors:authors
+                            isFavorite:isFavorite];
 }
 
 #pragma mark - Init
@@ -58,13 +60,16 @@
            imageURL:(NSURL *) imageURL
             bookURL:(NSURL *) bookURL
                tags:(NSArray *) tags
-            authors:(NSArray *) authors{
+            authors:(NSArray *) authors
+         isFavorite:(bool) isFavorite{
+    
     if (self = [super init]) {
         _title = title;
         _imageURL = imageURL;
         _bookURL = bookURL;
         _tags = tags;
         _authors = authors;
+        _isFavorite = isFavorite;
     }
     return self;
 }
@@ -73,10 +78,11 @@
 -(id) initWithDictionary:(NSDictionary *) dic{
     
     return [self initWithTitle:[dic objectForKey:@"title"]
-                       imageURL:[NSURL URLWithString:[dic objectForKey:@"image_url"]]
-                        bookURL:[NSURL URLWithString:[dic objectForKey:@"pdf_url"]]
-                           tags:[self extractTagsFromJSON:[dic objectForKey:@"tags"]]
-                        authors:[self extractAuthorsFromJSON:[dic objectForKey:@"authors"]]];
+                      imageURL:[NSURL URLWithString:[dic objectForKey:@"image_url"]]
+                       bookURL:[NSURL URLWithString:[dic objectForKey:@"pdf_url"]]
+                          tags:[self extractTagsFromJSON:[dic objectForKey:@"tags"]]
+                       authors:[self extractAuthorsFromJSON:[dic objectForKey:@"authors"]]
+                    isFavorite:NO];
 }
 
 -(NSArray *) extractTagsFromJSON:(NSString *) tagsJSON{

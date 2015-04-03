@@ -21,19 +21,23 @@
 @property(nonatomic, copy) NSString *authorsList;
 @property(nonatomic, copy) NSString *tagsList;
 
+@property(nonatomic) bool isFavorite;
+
 // Métodos de clase
 +(id) bookWithTitle:(NSString *) title
            imageURL:(NSURL *) imageURL
             bookURL:(NSURL *) bookURL
                tags:(NSArray *) tags
-            authors:(NSArray *) authors;
+            authors:(NSArray *) authors
+         isFavorite:(bool) isFavorite;
 
 // Designado
 -(id) initWithTitle:(NSString *) title
            imageURL:(NSURL *) imageURL
             bookURL:(NSURL *) bookURL
                tags:(NSArray *) tags
-            authors:(NSArray *) authors;
+            authors:(NSArray *) authors
+         isFavorite:(bool) isFavorite;
 
 -(id) initWithDictionary:(NSDictionary *) dic;
 @end

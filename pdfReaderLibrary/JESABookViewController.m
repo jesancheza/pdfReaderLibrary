@@ -9,6 +9,7 @@
 #import "JESABookViewController.h"
 #import "JESABook.h"
 #import "JESASimplePDFViewController.h"
+#import "Settings.h"
 
 @interface JESABookViewController ()
 
@@ -33,6 +34,27 @@
     
     // Hacer un push
     [self.navigationController pushViewController:pVC animated:YES];
+}
+
+- (IBAction)changeFavorite:(id)sender {
+    
+    if (self.isFavorite.on) {
+        self.model.isFavorite = YES;
+    }else{
+        self.model.isFavorite = NO;
+    }
+    
+    // mandamos una notificación
+    NSDictionary *extraInfo = [NSDictionary dictionaryWithObjects:@[self.model]
+                                                          forKeys:@[FAVORITE_KEY]];
+    
+    // Creamos la notificación
+    NSNotification *note = [NSNotification notificationWithName:BOOK_DID_FAVORITE_NOTIFICATION_NAME
+                                                         object:self
+                                                       userInfo:extraInfo];
+    
+    // Mandamos la notificación
+    [[NSNotificationCenter defaultCenter] postNotification:note];
 }
 
 #pragma mark - View Lifecycle
@@ -61,6 +83,11 @@
     self.photoView.image = self.model.photo;
     self.authorsView.text = self.model.authorsList;
     self.tagsView.text = self.model.tagsList;
+    if (self.model.isFavorite) {
+        [self.isFavorite setOn:YES];
+    }else{
+        [self.isFavorite setOn:NO];
+    }
 }
 
 #pragma mark - UISplitViewControllerDelegate

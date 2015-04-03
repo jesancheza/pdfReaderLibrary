@@ -18,3 +18,5 @@
 
 #define BOOK_DID_CHANGE_NOTIFICATION_NAME @"bookDidChangeNotification"
 #define BOOK_KEY @"bookKey"
+#define BOOK_DID_FAVORITE_NOTIFICATION_NAME @"bookDidFavoriteNotification"
+#define FAVORITE_KEY @"favoriteKey"

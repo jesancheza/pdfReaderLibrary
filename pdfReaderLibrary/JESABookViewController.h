@@ -16,10 +16,12 @@
 @property(nonatomic, weak) IBOutlet UIImageView *photoView;
 @property(nonatomic, weak) IBOutlet UILabel *authorsView;
 @property(nonatomic, weak) IBOutlet UILabel *tagsView;
+@property(nonatomic, weak) IBOutlet UISwitch *isFavorite;
 
 @property(nonatomic,strong) JESABook *model;
 
 -(id) initWithModel:(JESABook *) model;
 - (IBAction)displaySimplePDF:(id)sender;
+- (IBAction)changeFavorite:(id)sender;
 
 @end

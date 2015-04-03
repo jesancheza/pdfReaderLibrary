@@ -77,6 +77,33 @@
     
     [self.tableView registerNib:cellNib
          forCellReuseIdentifier:[JESABookCellView cellId]];
+    
+    // Nos damos de alta en la notificación
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self
+               selector:@selector(notifyThatBookDidFavorite:)
+                   name:BOOK_DID_FAVORITE_NOTIFICATION_NAME
+                 object:nil];
+}
+
+-(void) viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+    // Damos de baja la notificación
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center removeObserver:self];
+}
+
+#pragma mark - Notifications
+// BOOK_DID_FAVORITE_NOTIFICATION_NAME
+-(void)notifyThatBookDidFavorite:(NSNotification *) notification{
+    
+    // Sacamos el personaje
+    NSDictionary *dic = [notification userInfo];
+    JESABook *book = [dic objectForKey:FAVORITE_KEY];
+    
+    [self.tableView reloadData];
+    
 }
 
 #pragma mark - Actions

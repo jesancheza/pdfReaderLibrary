@@ -40,7 +40,7 @@
     // Nos damos de alta en la notificación
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self
-               selector:@selector(notifyThatCharacterDidChange:)
+               selector:@selector(notifyThatBookDidChange:)
                    name:BOOK_DID_CHANGE_NOTIFICATION_NAME
                  object:nil];
 }
@@ -55,7 +55,7 @@
 
 #pragma mark - Notifications
 // CHARACTER_DID_CHANGE_NOTIFICATION_NAME
--(void)notifyThatCharacterDidChange:(NSNotification *) notification{
+-(void)notifyThatBookDidChange:(NSNotification *) notification{
     
     // Sacamos el personaje
     NSDictionary *dic = [notification userInfo];
