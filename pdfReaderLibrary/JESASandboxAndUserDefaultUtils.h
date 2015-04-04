@@ -10,8 +10,8 @@
 
 @interface JESASandboxAndUserDefaultUtils : NSObject
 
--(NSData *) loadFileSandboxName:(NSString *) name;
--(void) saveFileInSandboxName:(NSString *) name data:(NSData *) data;
+-(id) loadFileSandboxName:(NSString *) name;
+-(void) saveFileInSandboxName:(NSString *) name data:(id) data;
 
 -(id) isUserDefaultName:(NSString *) name;
 -(void) saveInUserDefaultName:(NSString *) name value:(id) value;

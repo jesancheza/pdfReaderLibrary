@@ -11,7 +11,7 @@
 @implementation JESASandboxAndUserDefaultUtils
 
 #pragma mark - Sandbox
--(NSData *) loadFileSandboxName:(NSString *) name{
+-(id) loadFileSandboxName:(NSString *) name{
     //  Averiguar la url a la carpeta Document
     NSFileManager *fm = [NSFileManager defaultManager];
     NSArray *urls = [fm URLsForDirectory:NSDocumentDirectory
@@ -30,7 +30,7 @@
 }
 
 
--(void) saveFileInSandboxName:(NSString *) name data:(NSData *) data{
+-(void) saveFileInSandboxName:(NSString *) name data:(id) data{
 
     //  Averiguar la url a la carpeta Document
     NSFileManager *fm = [NSFileManager defaultManager];

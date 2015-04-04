@@ -8,6 +8,8 @@
 
 #import "JESALibrary.h"
 #import "JESABook.h"
+#import "JESASandboxAndUserDefaultUtils.h"
+#import "Settings.h"
 
 @interface JESALibrary ()
 
@@ -27,6 +29,8 @@
                                                                     options:NSJSONReadingMutableContainers
                                                                       error:&err];
             if (JSONObjects != nil) {
+
+                
                 for (NSDictionary *dic in JSONObjects) {
                     
                     JESABook *book = [[JESABook alloc] initWithDictionary:dic];
@@ -37,15 +41,12 @@
                         [self.library addObject:book];
                     }
                     
-                    // Añado el tag Favoritos
-                    //self.booksForTags = [NSMutableDictionary dictionaryWithObject:@[]
-                    //                                                       forKey:@"Favoritos"];
-                    
                     for (NSString *tag in book.tags) {
-                        NSArray *books;
-                        if ((books = [self.booksForTags objectForKey:tag])) {
+                        NSMutableArray *books;
+                        if ((books = [[self.booksForTags objectForKey:tag] mutableCopy])) {
                             // Ya tengo el tag
-                            [books arrayByAddingObject:book];
+                            [books addObject:book];
+                            [self.booksForTags setObject:books forKey:tag];
                         }else{
                             // Es un nuevo tag
                             if (!self.booksForTags) {
@@ -59,11 +60,21 @@
                     
                 }
                 
-                NSLog(@"La lista única de tags es: %@", [self tags]);
+                // Añadimos favoritos
+                /*JESASandboxAndUserDefaultUtils *utilsSandbox = [JESASandboxAndUserDefaultUtils new];
+                NSArray *favorites = [utilsSandbox loadFileSandboxName:FAVORITE_KEY];
+                
+                if (favorites) {
+                    for (JESABook *book in favorites) {
+                        [self addFavoriteBook:book];
+                    }
+                }*/
                 
                 // Ordenamos la librería
                 NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
                 self.library = [[self.library sortedArrayUsingDescriptors:@[sort]]mutableCopy];
+                
+                
                 
             }else{
                 NSLog(@"Error al parsear el JSON: %@", err.userInfo);
@@ -75,6 +86,39 @@
     return self;
 }
 
+#pragma mark - Actions
+-(void) addFavoriteBook:(JESABook *) book{
+    
+    NSMutableArray *books = [[self.booksForTags objectForKey:[self tagNameSection:0]] mutableCopy];
+    
+    // Añadimos el libro a favoritos
+    if (books) {
+        [books addObject:book];
+    }else{
+        books = [@[book] mutableCopy];
+    }
+
+    
+    // Ordenamos el array
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+    books = [[books sortedArrayUsingDescriptors:@[sort]]mutableCopy];
+    
+    // Añado array al dictionary
+    [self.booksForTags setObject:books
+                          forKey:[self tagNameSection:0]];
+    
+}
+
+-(void) deleteFavoriteBook:(JESABook *) book{
+    NSMutableArray *books;
+    if ((books = [[self.booksForTags objectForKey:[self tagNameSection:0]] mutableCopy])) {
+        [books removeObject:book];
+        // Añado array al dictionary
+        [self.booksForTags setObject:books
+                              forKey:[[self tagNameSection:0]
+                                      stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+    }
+}
 
 #pragma mark - Accessors
 -(JESABook *) libraryAtIndex:(NSUInteger) index{
@@ -93,6 +137,9 @@
     
     // Insertamos el tag Favoritos
     NSMutableArray *mutableTags = [tags mutableCopy];
+    if ([tags containsObject:@"Favoritos"]) {
+        [mutableTags removeObject:@"Favoritos"];
+    }
     [mutableTags insertObject:@"Favoritos" atIndex:0];
     
     return mutableTags;

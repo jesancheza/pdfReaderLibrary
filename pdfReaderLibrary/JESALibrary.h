@@ -26,4 +26,7 @@
 -(NSString *) tagNameSection:(NSUInteger) section;
 -(JESABook *) bookForTagPos:(NSUInteger) tagPos atIndex:(NSUInteger) index;
 
+-(void) addFavoriteBook:(JESABook *) book;
+-(void) deleteFavoriteBook:(JESABook *) book;
+
 @end

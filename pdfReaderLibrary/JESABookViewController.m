@@ -10,6 +10,8 @@
 #import "JESABook.h"
 #import "JESASimplePDFViewController.h"
 #import "Settings.h"
+#import "JESALibrary.h"
+#import "JESASandboxAndUserDefaultUtils.h"
 
 @interface JESABookViewController ()
 
@@ -38,11 +40,27 @@
 
 - (IBAction)changeFavorite:(id)sender {
     
+    // Recuperamos favoritos del sandbox
+    JESASandboxAndUserDefaultUtils *utilsSandbox = [JESASandboxAndUserDefaultUtils new];
+    NSMutableArray *favorites = [[utilsSandbox loadFileSandboxName:FAVORITES_BOOKS] mutableCopy];
+    
     if (self.isFavorite.on) {
         self.model.isFavorite = YES;
+        // Añadimos el libro al sandbox
+        if (favorites) {
+            [favorites addObject:self.model];
+        }else{
+            favorites = [@[self.model] mutableCopy];
+        }
     }else{
         self.model.isFavorite = NO;
+        // Eliminamos el libro del sandbox
+        [favorites removeObject:self.model];
     }
+    
+    // Guardamos array en el sandbox
+#warning hay que comprobar en el método si es un NSData o NSArray
+    //[utilsSandbox saveFileInSandboxName:FAVORITES_BOOKS data:[favorites copy]];
     
     // mandamos una notificación
     NSDictionary *extraInfo = [NSDictionary dictionaryWithObjects:@[self.model]

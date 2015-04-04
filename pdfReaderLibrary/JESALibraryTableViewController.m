@@ -84,15 +84,17 @@
                selector:@selector(notifyThatBookDidFavorite:)
                    name:BOOK_DID_FAVORITE_NOTIFICATION_NAME
                  object:nil];
+    
 }
 
--(void) viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
+-(void)dealloc {
     
     // Damos de baja la notificación
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center removeObserver:self];
+    
 }
+
 
 #pragma mark - Notifications
 // BOOK_DID_FAVORITE_NOTIFICATION_NAME
@@ -101,6 +103,14 @@
     // Sacamos el personaje
     NSDictionary *dic = [notification userInfo];
     JESABook *book = [dic objectForKey:FAVORITE_KEY];
+    
+    if (book.isFavorite == YES) {
+        // Añadimos el libro a favoritos
+        [self.model addFavoriteBook:book];
+    }else{
+        // Eliminamos el libro de favoritos
+        [self.model deleteFavoriteBook:book];
+    }
     
     [self.tableView reloadData];
     
