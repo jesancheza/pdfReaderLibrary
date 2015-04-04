@@ -21,7 +21,11 @@
 
 #pragma mark - Init
 -(id) initWithModel:(JESABook *) model{
-    if (self = [super initWithNibName:nil
+    NSString *nibName = nil;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        nibName = @"JESABookViewController~iphone";
+    }
+    if (self = [super initWithNibName:nibName
                                bundle:nil]) {
         _model = model;
         self.title = [model title];
@@ -87,6 +91,33 @@
     
     // Si estoy dentro de un SplitVC me pongo el botón
     self.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+    
+    // si estamos en landscape, añadimos la vista que tenemos para landscape
+    if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+        [self addPortraitViewWithProperFrame];
+    }
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    if (UIInterfaceOrientationIsLandscape(fromInterfaceOrientation)) {
+        // estamos en portrait
+        [self.portraitView removeFromSuperview];
+    }
+    else {
+        // estamos en landscape
+        [self addPortraitViewWithProperFrame];
+    }
+}
+
+- (void)addPortraitViewWithProperFrame
+{
+    // asignamos el frame a la vista en portrait para que se redimensione
+    // si la añadimos directamente como view, al no estar dentro de un VC, no se va a redimensionar
+    CGRect iPhoneScreen = [[UIScreen mainScreen] bounds];
+    CGRect portraitRect = CGRectMake(0, 0, iPhoneScreen.size.height, iPhoneScreen.size.width);
+    self.portraitView.frame = portraitRect;
+    [self.view addSubview:self.portraitView];
 }
 
 #pragma mark - Memory
@@ -105,6 +136,17 @@
         [self.isFavorite setOn:YES];
     }else{
         [self.isFavorite setOn:NO];
+    }
+    
+    // Landscape
+    self.titleViewLandscape.text = self.model.title;
+    self.photoViewLandscape.image = self.model.photo;
+    self.authorsViewLandscape.text = self.model.authorsList;
+    self.tagsViewLandscape.text = self.model.tagsList;
+    if (self.model.isFavorite) {
+        [self.isFavoriteLandscape setOn:YES];
+    }else{
+        [self.isFavoriteLandscape setOn:NO];
     }
 }
 

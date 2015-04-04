@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EDBA30931ACFDCEA000E5E5C /* JESABookViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDBA30921ACFDCEA000E5E5C /* JESABookViewController~iphone.xib */; };
 		EDC3EDBD1AC6B470003DBEC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC3EDBC1AC6B470003DBEC4 /* main.m */; };
 		EDC3EDC01AC6B470003DBEC4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC3EDBF1AC6B470003DBEC4 /* AppDelegate.m */; };
 		EDC3EDC21AC6B470003DBEC4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDC3EDC11AC6B470003DBEC4 /* Images.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EDBA30921ACFDCEA000E5E5C /* JESABookViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "JESABookViewController~iphone.xib"; sourceTree = "<group>"; };
 		EDC3EDB71AC6B470003DBEC4 /* pdfReaderLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pdfReaderLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDC3EDBB1AC6B470003DBEC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDC3EDBC1AC6B470003DBEC4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				EDC9B5E31ACA6C3E00B8B2FB /* JESASimplePDFViewController.h */,
 				EDC9B5E41ACA6C3E00B8B2FB /* JESASimplePDFViewController.m */,
 				EDC9B5E51ACA6C3E00B8B2FB /* JESASimplePDFViewController.xib */,
+				EDBA30921ACFDCEA000E5E5C /* JESABookViewController~iphone.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				EDC3EDF11AC839F7003DBEC4 /* JESABookCellView.xib in Resources */,
 				EDC3EDC21AC6B470003DBEC4 /* Images.xcassets in Resources */,
 				EDC6E3DE1ACC342D005CC71F /* images.jpeg in Resources */,
+				EDBA30931ACFDCEA000E5E5C /* JESABookViewController~iphone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
