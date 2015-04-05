@@ -30,6 +30,13 @@
                                                                       error:&err];
             if (JSONObjects != nil) {
 
+                // Recuperamos favoritos si los hay
+                JESASandboxAndUserDefaultUtils *utilsSandbox = [JESASandboxAndUserDefaultUtils new];
+                NSString *favorites = [utilsSandbox isUserDefaultName:FAVORITES_BOOKS];
+                
+                NSArray *arrayFavorites = [favorites componentsSeparatedByString:@","];
+                
+                NSMutableArray *favoritos = [[NSMutableArray alloc] init];
                 
                 for (NSDictionary *dic in JSONObjects) {
                     
@@ -58,22 +65,23 @@
                         }
                     }
                     
-                }
-                
-                // Añadimos favoritos
-                /*JESASandboxAndUserDefaultUtils *utilsSandbox = [JESASandboxAndUserDefaultUtils new];
-                NSArray *favorites = [utilsSandbox loadFileSandboxName:FAVORITE_KEY];
-                
-                if (favorites) {
-                    for (JESABook *book in favorites) {
-                        [self addFavoriteBook:book];
+                    // Añadimos favoritos
+                    if ([arrayFavorites containsObject:book.title]) {
+                        book.isFavorite = YES;
+                        [favoritos addObject:book];
                     }
-                }*/
+                    
+                }
                 
                 // Ordenamos la librería
                 NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
                 self.library = [[self.library sortedArrayUsingDescriptors:@[sort]]mutableCopy];
                 
+                // Añado array al dictionary para favoritos si los hay
+                if (favoritos) {
+                    [self.booksForTags setObject:favoritos
+                                          forKey:@"Favoritos"];
+                }
                 
                 
             }else{

@@ -46,25 +46,27 @@
     
     // Recuperamos favoritos del sandbox
     JESASandboxAndUserDefaultUtils *utilsSandbox = [JESASandboxAndUserDefaultUtils new];
-    NSMutableArray *favorites = [[utilsSandbox loadFileSandboxName:FAVORITES_BOOKS] mutableCopy];
+    NSString *favorites = [utilsSandbox isUserDefaultName:FAVORITES_BOOKS];
+    
+    NSMutableArray *arrayFavorites = [[favorites componentsSeparatedByString:@","] mutableCopy];
     
     if (self.isFavorite.on) {
         self.model.isFavorite = YES;
         // Añadimos el libro al sandbox
-        if (favorites) {
-            [favorites addObject:self.model];
+        if (arrayFavorites) {
+            [arrayFavorites addObject:self.model.title];
         }else{
-            favorites = [@[self.model] mutableCopy];
+            arrayFavorites = [@[self.model.title] mutableCopy];
         }
     }else{
         self.model.isFavorite = NO;
         // Eliminamos el libro del sandbox
-        [favorites removeObject:self.model];
+        [arrayFavorites removeObject:self.model.title];
     }
     
     // Guardamos array en el sandbox
-#warning hay que comprobar en el método si es un NSData o NSArray
-    //[utilsSandbox saveFileInSandboxName:FAVORITES_BOOKS data:[favorites copy]];
+    favorites = [arrayFavorites componentsJoinedByString:@","];
+    [utilsSandbox saveInUserDefaultName:FAVORITES_BOOKS value:favorites];
     
     // mandamos una notificación
     NSDictionary *extraInfo = [NSDictionary dictionaryWithObjects:@[self.model]

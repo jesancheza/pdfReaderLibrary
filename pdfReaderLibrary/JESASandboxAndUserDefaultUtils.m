@@ -26,6 +26,10 @@
                                          options:NSDataReadingMappedIfSafe
                                            error:&err];
     
+    /*NSString *cadena = [NSString stringWithContentsOfURL:url
+                                            usedEncoding:nil
+                                                   error:&err];*/
+    
     return data;
 }
 
@@ -41,9 +45,18 @@
     NSURL *url = [urls lastObject];
     url = [url URLByAppendingPathComponent:name];
     NSError *err;
-    BOOL rcI = [data writeToURL:url
-                             options:NSDataWritingAtomic
-                               error:&err];
+    BOOL rcI;
+    if ([data isKindOfClass:[NSData class]]) {
+        rcI = [data writeToURL:url
+                       options:NSDataWritingAtomic
+                         error:&err];
+    }else if ([data isKindOfClass:[NSString class]]){
+        [data writeToURL:url
+              atomically:NO
+                encoding:NSStringEncodingConversionExternalRepresentation
+                   error:&err];
+    }
+    
     
     // Comprobamos si ha ocurrido algún error
     if (rcI == NO) {
