@@ -18,7 +18,6 @@
 		EDC3EDE71AC6F1A6003DBEC4 /* JESALibraryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC3EDE61AC6F1A6003DBEC4 /* JESALibraryTableViewController.m */; };
 		EDC3EDED1AC82E8B003DBEC4 /* JESABookCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC3EDEC1AC82E8B003DBEC4 /* JESABookCellView.m */; };
 		EDC3EDF11AC839F7003DBEC4 /* JESABookCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC3EDF01AC839F7003DBEC4 /* JESABookCellView.xib */; };
-		EDC6E3DE1ACC342D005CC71F /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EDC6E3DD1ACC342D005CC71F /* images.jpeg */; };
 		EDC9B5E01AC84C1F00B8B2FB /* JESABookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC9B5DE1AC84C1F00B8B2FB /* JESABookViewController.m */; };
 		EDC9B5E11AC84C1F00B8B2FB /* JESABookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC9B5DF1AC84C1F00B8B2FB /* JESABookViewController.xib */; };
 		EDC9B5E61ACA6C3E00B8B2FB /* JESASimplePDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC9B5E41ACA6C3E00B8B2FB /* JESASimplePDFViewController.m */; };
@@ -57,7 +56,6 @@
 		EDC3EDEB1AC82E8B003DBEC4 /* JESABookCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JESABookCellView.h; sourceTree = "<group>"; };
 		EDC3EDEC1AC82E8B003DBEC4 /* JESABookCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JESABookCellView.m; sourceTree = "<group>"; };
 		EDC3EDF01AC839F7003DBEC4 /* JESABookCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JESABookCellView.xib; sourceTree = "<group>"; };
-		EDC6E3DD1ACC342D005CC71F /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpeg; sourceTree = "<group>"; };
 		EDC9B5DD1AC84C1F00B8B2FB /* JESABookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JESABookViewController.h; sourceTree = "<group>"; };
 		EDC9B5DE1AC84C1F00B8B2FB /* JESABookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JESABookViewController.m; sourceTree = "<group>"; };
 		EDC9B5DF1AC84C1F00B8B2FB /* JESABookViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JESABookViewController.xib; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 		EDC3EDB91AC6B470003DBEC4 /* pdfReaderLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				EDC6E3DF1ACC3433005CC71F /* Resources */,
 				EDC9B5E81ACB451900B8B2FB /* New Group */,
 				EDC3EDE81AC82C4E003DBEC4 /* Views */,
 				EDC3EDE11AC6F0ED003DBEC4 /* Controllers */,
@@ -184,14 +181,6 @@
 				EDC3EDF01AC839F7003DBEC4 /* JESABookCellView.xib */,
 			);
 			name = Views;
-			sourceTree = "<group>";
-		};
-		EDC6E3DF1ACC3433005CC71F /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				EDC6E3DD1ACC342D005CC71F /* images.jpeg */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		EDC9B5E81ACB451900B8B2FB /* New Group */ = {
@@ -288,7 +277,6 @@
 				EDC3EDC51AC6B470003DBEC4 /* LaunchScreen.xib in Resources */,
 				EDC3EDF11AC839F7003DBEC4 /* JESABookCellView.xib in Resources */,
 				EDC3EDC21AC6B470003DBEC4 /* Images.xcassets in Resources */,
-				EDC6E3DE1ACC342D005CC71F /* images.jpeg in Resources */,
 				EDBA30931ACFDCEA000E5E5C /* JESABookViewController~iphone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
